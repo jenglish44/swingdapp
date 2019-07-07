@@ -1,0 +1,197 @@
+﻿<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Swing D | Baseball Game Data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Swing Data , SwingD" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+<div id="user_container">
+                	<div id="upgrade_msg" class="notification">
+                    	<p>Congratulations!  Thank you for upgrading to the <b class="mname"></b> membership.  Your membership will continue through <b class="mdate"></b>.  Please contact us.  We look forward to providing you the best service possible.
+                        </p>
+                    </div>
+	<!--banner-starts-here-->
+	<!--<div class="banner page-content subscribe_back bounce" data-wow-delay="0.1s" id="home">
+    	<!--header start -->
+        <!--<div class="header">
+            <a href="#" class="show-sidebar"></a>
+            <a href="#" class="hide-sidebar"></a>   
+          <p class="header_title">Checkout</p>
+            <!--<a href="contact.html" class="header-mail"></a>-->
+            <!--<a href="tel:123456" class="header-call"></a>
+        </div>-->
+  <!--header end -->
+		<div class="container ">
+			<div class="content wow bounce" data-wow-delay="0.1s">
+            	<p class="error_note" class="hidden"></p>
+            	<p class="checkout_note">Upgrade membership to access all services!</p>
+                <p class="price_text"></p>
+                <div>
+                <img src="images/authorize-logo-white.png" width="150"/><br/>
+                credit/debit card
+                <img src="images/cc.png" />
+                </div>
+ 			<form id="checkout_form">
+                    <p>
+                    <label>Name on Card</label>
+                    <input type="text" name="namecard" id="namecard" placeholder="Name on Card" />
+                    </p>
+                    <p>
+                    <label>Card Number</label>
+                    <input type="text" name="card_num" id="card_num" placeholder="Card Number" />
+                    </p>
+                    <p>
+                    <label>Security Code (CVV)</label>
+                    <input type="text" name="sec_name" id="sec_name" placeholder="Security Code( CVV )" />
+                    </p>
+                    <p>
+                    <label>Expiration Date</label>
+                    <input type="text" name="exp_date" id="exp_date" placeholder="Expiration Date" />
+                    </p>
+            		<br />
+                    <br />
+                    <p>
+                    By clicking Continue, I agree I have read and accept SwingD’s <a href="help.html?a=termsofservice">Terms of Service</a>, I'm at least 18 years old, and I consent to SwingD’s <a href="help.html?a=privacypolicy">Privacy and Refund policies</a>
+                    </p>
+            
+            </form>
+           </div>
+                <div class="footer">
+                    <div class="footer-right">
+                     <input type="button" name="submit_btn" id="submit_btn" value="Upgrade" class="green_btn"/>
+                    </div>
+                </div><!--eof footer -->
+		</div>
+	</div>
+	<!--banner-ends-here-->
+    <div id="toPopup"> 
+        <div class="close"></div>
+       	<span class="ecs_tooltip">Press Esc to close <span class="arrow"></span></span>
+		<div id="popup_content"> <!--your content start-->
+            You have choosen . Press Yes to confirm.
+            <div>
+            <input type="hidden" name="confirm_type" id="confirm_type" value="confirmout" />
+            <input type="button" name="confirm_btn" id="confirm_btn1" value="No" class="grey_btn confirm_btn"/>
+            <input type="button" name="confirm_btn" id="confirm_btn2" value="Yes" class="red_btn confirm_btn"/>
+            </div>
+        </div> <!--your content end-->
+    </div> <!--toPopup end-->
+	<div class="loader"></div>
+   	<div id="backgroundPopup"></div>
+<!--sidebar starts -->
+<!--<div class="page-sidebar">-->
+ </div>
+<!--sidebar ends here-->
+<script type="text/javascript" src="js/easing.js"></script>
+<!--<script type="text/javascript" src="js/slide_panel.js"></script>-->
+<script type="text/javascript" src="js/popup.js"></script>
+<script type="text/javascript" src="js/general.js"></script>
+<script src="phonegap.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var mtype=window.localStorage.getItem("mtype");
+	var mpay=window.localStorage.getItem("mpay");
+	if(mtype=='club')
+		$('.checkout_note').html('Item : <b>Club Membership</b>');
+	if(mtype=='pro')
+		$('.checkout_note').html('Item : <b>Professional Membership</b>');
+	$('.price_text').html('Cost : $'+mpay+'.00');
+	$('#submit_btn').click(function(){
+		//var mtype=$(this).attr('id').replace('subscribe_','');
+		//window.localStorage.setItem("mpay",$('#'+mtype+'_amount').val());
+		//gotopage('checkout.html');
+		var user=JSON.parse(window.localStorage.getItem("user"));
+		var n=$('#namecard').val();
+		var c=$('#card_num').val();
+		var e=$('#exp_date').val();
+		var s=$('#sec_name').val();
+		//var a=window.localStorage.getItem("mpay");
+		var m=window.localStorage.getItem("mtype");
+		var u=user.id;
+
+		$.ajax({
+		  //url: "http://www.swingd.com/action/authorizenet/authorizenet.php",
+		  url: "https://www.swingd.com/action/membership.php",
+		  dataType: 'json',
+		  crossDomain: true,
+		  method: 'POST',
+		  async: false,
+		  data: 'n='+n+'&c='+c+'&e='+e+'&s='+s+'&u='+u+'&m='+m+'&p=authorizenet',
+		  success: function(c) {
+			//alert(c);
+			//window.localStorage.setItem("hitter",null);
+			if(c.success==1)
+			{
+				//alert("Congratulations! Upgradation successful.");
+				user.user_group=c.user_group;
+				user.expire_date=c.expire_date;
+				window.localStorage.setItem("user",JSON.stringify(user));
+				gotopage('checkout_no_nav.html?u=s');
+			}
+			else
+			{
+				$('.error_note').html(c.msg);
+			}
+			return true;
+		  },
+		  error: function(xr,msg,errthr)
+		  {
+		  		if(msg!="")
+					$('.notification').html(msg);
+				if(errthr=='Not Allowed')
+					$('.notification').html('No network connction found. Please try later.');
+				else if(errthr!="")
+					$('.notification').html(errthr);
+				//alert(msg+' - '+errthr);
+				
+		  }
+		});
+			return true;
+
+
+	});
+	
+});
+function initbtn()
+{
+
+	$('.confirm_btn').click(function(){
+	disablePopup();
+	
+	if($(this).val()=='Yes')
+		{
+			localStorage.removeItem("hitter");
+			localStorage.removeItem("cur_hitter");
+			localStorage.removeItem("game");
+			localStorage.removeItem("gamesrl");
+			//disablePopup
+			gotopage('checkout_no_nav.html');
+		}
+		//msg
+		if(getURLParameter('u')=='s')
+		{
+			$('.mname').html(u.user_group);
+			$('.mdate').html(u.expire_date);
+			$('#upgrade_msg').show();
+		}
+			
+		//
+	});
+}
+
+</script>
+</body>
+</html>

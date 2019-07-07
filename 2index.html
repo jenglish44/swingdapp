@@ -1,0 +1,347 @@
+﻿<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Swing D | Baseball Game Data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Swing Data , SwingD" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<!--animated-css-->
+		<link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
+		<script src="js/wow.min.js"></script>
+		<script>
+		 new WOW().init();
+
+	function ifIsFinished()
+	{
+		if(document.getElementById('isFinished').value==1)
+		window.location.href="#dataupdate";
+	}
+
+		</script>
+<!--animated-css-->  
+</head>
+<body>
+	<!--banner-starts-here-->
+	<div class="banner wow bounce" data-wow-delay="0.1s" id="home">
+		<div class="container">
+			<div class="header">
+				<div class="header-left">
+					<a href="index.html">
+                    <!--<img src="images/logo.png" alt="">-->
+                    SwingD
+                    </a>
+				</div>
+				<div class="menu">
+                     <a class="toggleMenu" href="#"><img src="images/menu-icon.png" alt="" /> </a>
+					<ul class="nav" id="nav">
+						<li><a href="#home" class="active scroll">HOME</a></li>
+						<!--<li style="display:none;"><a href="#feature" class="scroll">FEATURES</a></li>-->
+                        <li><a href="#pitch" class="scroll hidden" id="pitch_link">pitch</a></li>
+                        <li><a href="#dataupdate" class="scroll hidden" id="dataupdate_link">dataupdate</a></li>
+						<li><a class="scroll" href="#contact">CONTACT</a></li>
+					</ul>
+                                  <!----start-top-nav-script---->
+		                      <script type="text/javascript" src="js/responsive-nav.js"></script>
+
+					<script type="text/javascript">
+					jQuery(document).ready(function($) {
+						$(".scroll").click(function(event){		
+							event.preventDefault();
+							$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+						});
+						
+						$('#cont_btn').click(function(){
+							$('#pitch').show();
+							$('#pitch_link').click();
+						});
+					});
+					</script>
+		<!----//End-top-nav-script---->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="banner-bottom wow bounce" data-wow-delay="0.1s">
+				<h1>Swing data!</h1>
+                <p>Game Statistics</p>
+                <a class="scroll" href="#cageform" style="color:#fff;">Start Hitting</a>
+			</div>
+		</div>
+	</div>
+	<!--banner-ends-here-->
+	<!--cagehit_form-starts-here-->
+    <form action="" id="cagehit_form">
+	<div class="cageform page" id="cageform" data-role="page">
+		<div class="container">
+			<div class="cageform-top">
+				<div class="col-md-5 cageform-left wow bounceInLeft" data-wow-delay="0.4s">
+					<h3>Cage Chart</h3>
+				</div>
+				<div class="menu">
+                     <a class="toggleMenu" href="#"><img src="images/menu-icon.png" alt="" /> </a>
+					<ul class="nav" id="nav">
+						<li><a href="#home" class="active scroll">HOME</a></li>
+						<!--<li style="display:none;"><a href="#feature" class="scroll">FEATURES</a></li>-->
+                        <li><a href="#pitch" class="scroll hidden" id="pitch_link">pitch</a></li>
+						<li><a class="scroll" href="#contact">CONTACT</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+				<div class="col-md-7 cageform-right wow bounceInRight" data-wow-delay="0.4s">
+                	<p>
+                	<label>Date</label>
+                    <select name="month" id="month">
+                    	<option value="">Month</option>
+                    	<option value="1">January</option>
+                    	<option value="2">February</option>
+                    	<option value="3">March</option>
+                    	<option value="4">April</option>
+                    	<option value="5">May</option>
+                    	<option value="6">June</option>
+                    	<option value="7">July</option>
+                    	<option value="8">August</option>
+                    	<option value="9">September</option>
+                    	<option value="10">October</option>
+                    	<option value="11">November</option>
+                    	<option value="12">December</option>
+                    </select>
+                    <select name="day" id="day">
+                    	<option value="">Day</option>
+                    	<option value="1">1</option>
+                    	<option value="2">2</option>
+                    	<option value="3">3</option>
+                    	<option value="4">4</option>
+                    	<option value="5">5</option>
+                    	<option value="6">6</option>
+                    	<option value="7">7</option>
+                    	<option value="8">8</option>
+                    	<option value="9">9</option>
+                    	<option value="10">10</option>
+                    	<option value="11">11</option>
+                    	<option value="12">12</option>
+                    	<option value="13">13</option>
+                    	<option value="14">14</option>
+                    	<option value="15">15</option>
+                    	<option value="16">16</option>
+                    	<option value="17">17</option>
+                    	<option value="18">18</option>
+                    	<option value="19">19</option>
+                    	<option value="20">20</option>
+                    	<option value="21">21</option>
+                    	<option value="22">22</option>
+                    	<option value="23">23</option>
+                    	<option value="24">24</option>
+                    	<option value="25">25</option>
+                    	<option value="26">26</option>
+                    	<option value="27">27</option>
+                    	<option value="28">28</option>
+                    	<option value="29">29</option>
+                    	<option value="30">30</option>
+                    	<option value="31">31</option>
+                    </select>
+                    <select name="year" id="year">
+                    	<option value="">Year</option>
+                    	<option value="2015">2015</option>
+                    	<option value="2016">2016</option>
+                    	<option value="2017">2017</option>
+                    	<option value="2018">2018</option>
+                    	<option value="2019">2019</option>
+                    	<option value="2020">2020</option>
+                    </select>
+                    </p>
+                    <p>
+                    <label>Hitter</label>
+                    <select>
+                    <option value="">Hitter</option>
+                    <option value="1">Alexis</option>
+                    <option value="2">Annie</option>
+                    </select>
+                    </p>
+                    <p>
+                    <input type="button" name="cont_btn" id="cont_btn" value="Continue" />
+                    </p>
+                </div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="cageform-bottom">
+				<div class="col-md-7 cageform-bottom-right wow bounceInRight" data-wow-delay="0.4s">
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+    </form>
+	<!--cagehit_form-ends-here-->
+ 	<!--pitch-starts-here-->
+	<div class="pitch page" id="pitch" data-role="page">
+		<div class="container">
+			<div class="awesome-top">
+				<div class="col-md-5 awesome-left wow bounceInLeft" data-wow-delay="0.4s">
+					<h3 id="pitch_heading">Pitch 1</h3>
+				</div>
+				<div class="menu">
+                     <a class="toggleMenu" href="#"><img src="images/menu-icon.png" alt="" /> </a>
+					<ul class="nav" id="nav">
+						<li><a href="#home" class="active scroll">HOME</a></li>
+						<!--<li style="display:none;"><a href="#feature" class="scroll">FEATURES</a></li>-->
+                        <li><a href="#pitch" class="scroll hidden" id="pitch_link">pitch</a></li>
+						<li><a class="scroll" href="#contact">CONTACT</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+				<div class="col-md-7 awesome-right wow bounceInRight" data-wow-delay="0.4s">
+                	<input type="radio" name="pitch_type" value="1" /> Strike Swinging (hard hit)<br />
+                	<input type="radio" name="pitch_type" value="2" /> Strike Swinging (weak hit)<br />
+                	<input type="radio" name="pitch_type" value="3" /> Strike Taken<br />
+                	<input type="radio" name="pitch_type" value="4" /> Ball Taken<br />
+                	<input type="radio" name="pitch_type" value="5" /> Ball Swinging (hard hit)<br />
+                	<input type="radio" name="pitch_type" value="6" /> Ball Swinging (weak hit)<br /><br /><br />
+                    Hitter Finished?<br /><br />
+                    <input type="radio" name="isFinished" value="1" id="isFinished1"/> Yes&nbsp;&nbsp;
+                    <input type="radio" name="isFinished" value="0" id="isFinished0"/> No<br /><br />
+                     <p>
+					<input type="button" name="backbutton" value="Back" />
+					<input type="button" name="cont_pitch" id="cont_pitch" value="Continue" />
+                    <input type="hidden" name="pitch_no" id="pitch_no" value="1" />
+                    </p>
+               </div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="awesome-bottom">
+				<div class="col-md-7 awesome-bottom-right wow bounceInRight" data-wow-delay="0.4s">
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--pitch-ends-here-->   
+    <!--submit data starts here -->
+    <div class="dataupdate page" id="dataupdate" data-role="page">
+		<div class="container">
+			<div class="awesome-top">
+				<div class="col-md-5 awesome-left wow bounceInLeft" data-wow-delay="0.4s">
+                </div>
+            </div>
+			<div class="awesome-bottom">
+				<div class="col-md-5 awesome-bottom-left wow bounceInLeft" data-wow-delay="0.4s">
+					Click submit to finish.<br /><br />
+					<input type="button" name="backbutton" value="Back" />
+					<input type="button" name="dataupdate_btn" id="dataupdate_btn" value="Submit" />
+					<!--<img src="images/a-2.png" alt="">-->
+				</div>
+				<div class="clearfix"> </div>
+       		</div>
+  		 </div>
+   </div>
+    <!--submit data ends here -->
+	<!--awesome-starts-here-->
+	<!--<div class="awesome">
+		<div class="container">
+			<div class="awesome-top">
+				<div class="col-md-5 awesome-left wow bounceInLeft" data-wow-delay="0.4s">
+					<h3>Awesome meets you</h3>
+					<p>Measure your awesomess with a tap of a button in a simple User Interface.</p>
+				</div>
+				<div class="col-md-7 awesome-right wow bounceInRight" data-wow-delay="0.4s">
+					<img src="images/a-1.png" alt="">
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="awesome-bottom">
+				<div class="col-md-5 awesome-bottom-left wow bounceInLeft" data-wow-delay="0.4s">
+					<img src="images/a-2.png" alt="">
+				</div>
+				<div class="col-md-7 awesome-bottom-right wow bounceInRight" data-wow-delay="0.4s">
+					<h3>Express yourself</h3>
+					<p>Appsolute allows you to express your awesomeness. No matter <span>what you express or even share with your peers,  Appsolute is</span> your best platform on the web. Say hello to your new <span>awesomeness meter! </span></p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>-->
+	<!--awesome-ends-here-->
+	<!--footer-starts-here-->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-main">
+				<div class="col-md-6 footer-left wow bounceInLeft" data-wow-delay="0.1s">
+					<h5>Contact Address 1<span>Contact Address 2</span></h5>
+				</div>
+				<div class="col-md-6 footer-right wow bounceInRight" data-wow-delay="0.1s">
+					<ul>
+						<li><a href="#"><span class="twit"> </span></a></li>
+						<li><a href="#"><span class="f"> </span></a></li>
+						<li><a href="#"><span class="in"> </span></a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="footer-text">
+				<p>powered by info</p>
+			</div>
+		</div>
+		 <script type="text/javascript">
+									$(document).ready(function() {
+										/*
+										var defaults = {
+								  			containerID: 'toTop', // fading element id
+											containerHoverID: 'toTopHover', // fading element hover id
+											scrollSpeed: 1200,
+											easingType: 'linear' 
+								 		};
+										*/
+										
+										$().UItoTop({ easingType: 'easeOutQuart' });
+										
+									});
+								</script>
+		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	</div>
+	<!--footer-ends-here-->
+	<!---- start-smoth-scrolling---->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
+					jQuery(document).ready(function($) {
+						$(".scroll").click(function(event){		
+							event.preventDefault();
+							$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+						});
+						//pitch form function
+						$('#cont_pitch').click(function()
+						{
+							$('#cageform').hide();
+							if($('input[name=isFinished]:checked').val()==1)
+							{
+								$('#pitch').hide();
+								$('#dataupdate').show();
+								$('#pitch_no').val(1);
+								$('#dataupdate_link').click();
+							}
+							else
+							{
+								$('#pitch').hide();
+								var p=eval($('#pitch_no').val())+eval(1);
+								$('#pitch_no').val(p);
+								$('#pitch_heading').html('Pitch '+p);
+								$('input[name=pitch_type]').attr('checked',false);
+								$('input[name=isFinished]').attr('checked',false);
+								$('#pitch').show();
+								$('#pitch_link').click();
+							}
+						});
+					});
+					</script>
+<!--start-smoth-scrolling-->
+</body>
+</html>

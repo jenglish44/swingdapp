@@ -1,0 +1,233 @@
+﻿<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Swing D | Baseball Game Data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Swing Data , SwingD" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+	<div id="preloader">
+    	<img src="images/loading.gif" /><br/>
+    	<p>Loading content.. please wait</p>
+    </div>
+	<!--banner-starts-here-->
+	<div class="banner page-content bounce user_back" data-wow-delay="0.1s" id="home">
+    	<!--header start -->
+        <div class="header">
+            <a href="#" class="show-sidebar"></a>
+            <a href="#" class="hide-sidebar"></a>   
+         <p class="header_title">Reset Password</p>
+             <!--<a href="contact.html" class="header-mail"></a>-->
+            <a href="tel:123456" class="header-call"></a>
+        </div>
+  <!--header end -->
+        <form action="" id="resetpass_form">
+		<div class="container">
+			<div class="content wow bounce" data-wow-delay="0.1s">
+                <p class="error notification"></p>
+            	<div id="forgotpass_container" class="hidden">
+                    <p class="note">
+                  Please enter valid email address and tap CONTINUE at bottom and a unique code will be sent to this email.  Up to 15 minutes may be required before you receive this email.
+                  </p>
+
+                	<p>
+                	<label>Email</label>
+                    <input type="email" name="uemail" id="uemail" placeholder="Email Id" />
+                    </p>
+                <p>or</p>
+                <p>I have already received code.</p>
+                <a class="scroll greenlink" href="resetpass.html?t=code">Enter Unique Code</a>
+                </div>
+               <div id="code_container" class="hidden">
+                     <p class="note">
+                  Please enter unique code and reset password.
+                  </p>
+               	<p>
+                	<label>Code</label>
+                    <input type="text" name="ucode" id="ucode" placeholder="Unique Code" />
+                    </p>
+               </div>
+               <div id="reset_container" class="hidden">
+                	<p>
+                	<label>New Password</label>
+                    <input type="password" name="newpass" id="newpass" placeholder="New Password" />
+                    </p>
+               </div>
+               <div id="success_container" class="hidden">
+                	<p>
+                	Password reset successful.
+                    </p>
+                    <a class="scroll greenlink" href="index.html">Home</a>
+               </div>
+               <div id="userreset_container" class="hidden">
+                	<p>
+                	<label>Old Password</label>
+                    <input type="password" name="uoldpass" id="uoldpass" placeholder="Old Password" />
+                    </p>
+                	<p>
+                	<label>New Password</label>
+                    <input type="password" name="unewpass" id="unewpass" placeholder="New Password" />
+                    </p>
+               </div>
+            </div>
+            <div class="footer">
+            	<div class="footer-right">
+                <input type="hidden" name="form_action" id="form_action" value="forgotpass" />
+                <input type="button" name="cont_btn" id="cont_btn" value="Continue" class="submit_btn"/>
+                </div>
+            </div>
+		</div>
+                </form>
+	</div>
+	<!--banner-ends-here-->
+<!--sidebar starts -->
+<div class="page-sidebar">
+</div>
+<!--sidebar ends here-->
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="js/slide_panel.js"></script>
+<script type="text/javascript" src="js/general.js"></script>
+<script src="phonegap.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//var base_url='https://www.swingd.com/action/';
+	var base_url='action/';
+	var t=getURLParameter('t');
+	//if(t==null)
+		//t='userreset';
+	$('.error').html('').hide();
+	$('#form_action').val(t);
+	$('#'+t+'_container').removeClass('hidden');
+	$('#cont_btn').click(function(){
+		//validations
+		var fc=$('#form_action').val();
+		switch(fc)
+		{	
+			case 'forgotpass':
+				$.ajax({
+				 url: base_url+"resetpass.php",
+				 // url: "action/getteam.php",
+				  dataType: 'json',
+				  async: false,
+				  data: "u="+$('#uemail').val()+'&fc='+fc,
+				  success: function(c) {
+					//alert(c);
+					if(c.success=='1')
+					{
+						$('#forgotpass_container').addClass('hidden');
+						$('#code_container').removeClass('hidden');
+						$('#form_action').val('code');
+						//window.localStorage.removeItem("user");
+						window.localStorage.setItem("tempemail",$('#uemail').val());
+					}
+					else
+					{
+						$('.error').html(c.msg).show();
+					}
+					return true;
+				  }
+				});
+				return true;
+				break;
+			case 'code':
+				var uemail=window.localStorage.getItem("tempemail");
+				$.ajax({
+				 url: base_url+"resetpass.php",
+				 // url: "action/getteam.php",
+				  dataType: 'json',
+				  async: false,
+				  data: "u="+uemail+"&c="+$('#ucode').val()+'&fc='+fc,
+				  success: function(c) {
+					//alert(c);
+					if(c.success=='1')
+					{
+						$('#code_container').addClass('hidden');
+						$('#reset_container').removeClass('hidden');
+						$('#form_action').val('reset');
+						//window.localStorage.removeItem("user");
+						//window.localStorage.setItem("tempemail",$('#uemail').val());
+					}
+					else
+					{
+						$('.error').html(c.msg).show();
+					}
+					return true;
+				  }
+				});
+				return true;
+				break;
+			case 'reset':
+				var uemail=window.localStorage.getItem("tempemail");
+				$.ajax({
+				 url: base_url+"resetpass.php",
+				 // url: "action/getteam.php",
+				  dataType: 'json',
+				  async: false,
+				  data: "u="+uemail+"&p="+$('#newpass').val()+'&fc='+fc,
+				  success: function(c) {
+					//alert(c);
+					if(c.success=='1')
+					{
+						$('#reset_container').addClass('hidden');
+						$('#success_container').removeClass('hidden');
+						/*$('#form_action').val('reset');*/
+						window.localStorage.removeItem("tempemail");
+					}
+					else
+					{
+						$('.error').html(c.msg).show();
+					}
+					return true;
+				  }
+				});
+				return true;
+				break;
+			case 'userreset':
+				var u=JSON.parse(window.localStorage.getItem("user"));
+				$.ajax({
+				 url: base_url+"resetpass.php",
+				 // url: "action/getteam.php",
+				  dataType: 'json',
+				  async: false,
+				  data: "u="+u.user_email+"&op="+$('#uoldpass').val()+"&p="+$('#unewpass').val()+'&fc='+fc,
+				  success: function(c) {
+					//alert(c);
+					if(c.success=='1')
+					{
+						$('#userreset_container').addClass('hidden');
+						$('#success_container').removeClass('hidden');
+						/*$('#form_action').val('reset');*/
+						window.localStorage.removeItem("tempemail");
+					}
+					else
+					{
+						$('.error').html(c.msg).show();
+					}
+					return true;
+				  }
+				});
+				return true;
+				break;
+			default:
+				break;
+		}
+	});
+
+});
+</script>
+</body>
+</html>

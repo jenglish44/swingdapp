@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Swing D | Baseball Game Data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Swing Data , SwingD" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="css/bounce_animate.css" rel='stylesheet' type='text/css' />
+
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+	<div id="preloader">
+    	<img src="images/loading.gif" /><br/>
+    	<p>Loading content.. please wait</p>
+    </div>
+	<!--banner-starts-here-->
+	<div class="banner page-content summary_back" data-wow-delay="0.1s" id="home">
+    	<!--header start -->
+        <div class="header">
+            <a href="#" class="show-sidebar"></a>
+            <a href="#" class="hide-sidebar"></a>   
+         <p class="header_title">Summary</p>
+             <!--<a href="contact.html" class="header-mail"></a>-->
+            <a href="tel:123456" class="header-call"></a>
+        </div>
+  <!--header end -->
+       <form action="" id="cagehit_form">
+		<div class="container">
+			<div class="content bounceInLeft" data-wow-delay="0.1s">
+                <div id="game_date"></div>
+            	<div id="gamesummary_container" class="cgform">
+                	<table id="summary_table" cellspacing="2">
+                    	<!--<tr>
+                        	<td>
+                            <input type="checkbox" name="select_all" id="select_all" value="" /> Select all
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>-->
+                        <tr>
+                        	<td >      
+                            </td>
+                        </tr>
+                    </table>
+                   <!-- <div id="cnt"></div>-->
+                   <input type="hidden" name="bs" id="bs" value="" />
+                    <div id="error_note" class="hidden"></div>
+                </div>
+               </div>
+                <div class="footer">
+                    <div class="footer-left">
+                    <input type="button" name="back_btn" id="back_btn" value="Return" class="back_btn"/>
+                    </div>
+                    <div class="footer-right">
+                    <input type="button" name="cont_btn" id="cont_btn" value="End Game" class="submit_btn"/>
+                    </div>
+                </div>
+		</div>
+                </form>
+	</div>
+	<!--banner-ends-here-->
+    <div id="toPopup"> 
+        <div class="close"></div>
+       	<span class="ecs_tooltip">Press Esc to close <span class="arrow"></span></span>
+		<div id="popup_content"> <!--your content start-->
+            <p>
+            	<span id="popup_str"></span>
+                <div>
+                <input type="button" name="confirm_btn" id="confirm_btn1" value="No" class="grey_btn confirm_btn"/>
+                <input type="button" name="confirm_btn" id="confirm_btn2" value="Yes" class="red_btn confirm_btn"/>
+                </div>
+            </p>
+        </div> <!--your content end-->
+    </div> <!--toPopup end-->
+	<div class="loader"></div>
+   	<div id="backgroundPopup"></div>
+<!--sidebar starts -->
+<div class="page-sidebar">
+
+</div>
+<!--sidebar ends here-->
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="js/slide_panel.js"></script>
+<script type="text/javascript" src="js/popup.js"></script>
+<script type="text/javascript" src="js/general.js"></script>
+<script src="phonegap.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+		var g=window.localStorage.getItem("game");
+		var game=JSON.parse(g);
+		//var srl=game.length-1;
+		var srl=window.localStorage.getItem("gamesrl");
+		var p=getPlayerArr();
+		var bs=['BSM','BFB','BGBO','BFBO','BLDO','BHGBO','BLFBO','BFBH','BHGBH','BLFBH','BLDH','BSH','BWH'];
+		var ss=['SSM','SFB','SGBO','SFBO','SLDO','SHGBO','SLFBO','SFBH','SHGBH','SLFBH','SLDH','SSH','SWH'];
+		var st=['CS','SOL','SBC'];
+		var bt=['BB','BW','HBP','BBC'];
+		var res={'BSM':'Swing and Miss','BFB':'Foul Ball','BGBO':'Ground Ball Out','BFBO':'Fly Ball Out','BLDO':'Line Drive Out','BHGBO':'Hard Ground Ball Out','BLFBO':'Long Fly Ball Out','BFBH':'Fly Ball Hit','BHGBH':'Hard Ground Ball Hit','BLFBH':'Long Fly Ball Hit','BLDH':'Line Drive Hit','BSH':'Slap hit','BWH':'Infield Hit or Reach on Error','SSM':'Swing and miss','SFB':'Foul Ball','SGBO':'Ground Ball Out','SFBO':'Fly Ball Out','SLDO':'Line Drive Out','SHGBO':'Hard Ground Ball Out','SLFBO':'Long Fly Ball Out','SFBH':'Fly Ball Hit','SHGBH':'Hard Ground Ball Hit','SLFBH':'Long Fly Ball Hit','SLDH':'Line Drive Hit','SSH':'Slap hit','SWH':'Infield Hit or Reach on Error','CS':'Called Strike','SOL':'Strike Out Looking','SBC':'Bad call. Actually a ball.','BB':'Ball','BW':'Walk','HBP':'HBP','BBC':'Bad call. Actually a strike','TOUT':'Team Out'};
+		
+		//$('#cnt').html(JSON.stringify(game));
+		$('h3').html(game[srl].vteam+' <small>vs</small> '+game[srl].team);
+		var gdate=game[srl].edate.split('-');
+		$('#game_date').html(gdate[1]+'-'+gdate[2]+'-'+gdate[0]);
+		
+		var inning=team= batter=str=stat_srl='';
+		var num=numProps(game[srl].stat);
+		for(var count=0;count<num;count++)
+		{
+			//if(inning!=game[srl].stat[count].i)
+			//{
+			if(team!=game[srl].stat[count].t)
+			{
+				inning=game[srl].stat[count].i;
+				team=game[srl].stat[count].t;
+				if(team==game[srl].vteam)
+					str+='<tr><td class="inning">Top of Inning '+game[srl].stat[count].i+' - '+getTeamTitle(team);+'</td></tr>';
+				if(team==game[srl].team)
+					str+='<tr><td class="inning">Bottom of Inning '+game[srl].stat[count].i+' - '+getTeamTitle(team);+'</td></tr>';
+			}
+			if(batter!=game[srl].stat[count].b)
+			{
+				batter=game[srl].stat[count].b;
+				str+='<tr><td class="batter">';
+				if(p[game[srl].stat[count].b]===undefined)
+					str+=game[srl].stat[count].b+'</td></tr>';
+				else
+					str+=p[game[srl].stat[count].b]+'</td></tr>';
+			}
+			str+='<tr><td class="result">';
+				str+=eval(count)+eval(1);
+				str+='&nbsp;&nbsp;&nbsp;&nbsp;'+game[srl].stat[count].bl+'-'+game[srl].stat[count].s;
+				str+='&nbsp;&nbsp;&nbsp;&nbsp;';
+				if(typeof(game[srl].stat[count].r)=='undefined')
+				{
+					str+='No record found.</td></tr>';
+					stat_srl=0;
+				}
+				else if(game[srl].stat[count].r=='' && count==(num-1))
+				{
+					str+='Current pitch.</td></tr>';
+					stat_srl=0;
+				}
+				else
+				{
+					if(ss.indexOf(game[srl].stat[count].r)>=0)
+						str+='Strike Swinging -> ';
+					if(bs.indexOf(game[srl].stat[count].r)>=0)
+						str+='Ball Swinging -> ';
+					if(st.indexOf(game[srl].stat[count].r)>=0)
+						str+='Strike Taken -> ';
+					if(bt.indexOf(game[srl].stat[count].r)>=0)
+						str+='Ball Taken -> ';
+					str+=res[game[srl].stat[count].r]+'</td></tr>';
+					stat_srl=eval(count)+eval(1);
+				}
+		}
+		$('#summary_table').html(str);
+		$('#bs').val(stat_srl);
+		//alert(str);
+	$('#cont_btn').click(function(){
+		//validations
+		var err=0;
+		var err_str='';
+		if(err==1)
+		{
+		$('#error_note').html('<ul>'+err_str+'</ul>').removeClass('hidden');
+		return false;
+		}
+		else{
+		//
+		$('#error_note').html('').addClass('hidden');
+		$('.error').removeClass('error');
+		var g=window.localStorage.getItem("game");
+		//alert(g);
+		var game=JSON.parse(g);
+		var srl=game.length-1;
+
+		window.localStorage.setItem("game",JSON.stringify(game));
+
+		gotopage('dataupload.html');
+		}//eof validation else
+	});
+	readypopup();
+	//initbtn();
+	
+	$('#back_btn').click(function(){
+		confirmgoback();
+	});
+	
+});
+function initbtn()
+{
+	$('.confirm_btn').click(function(){
+		disablePopup();
+		if($(this).val()=='Yes')
+			gotopage('game_pitch.html?f=s');
+	});
+}
+function getPlayerArr()
+{
+	var player=window.localStorage.getItem("player");
+	var playerdate=window.localStorage.getItem("playerdate");
+	//alert(player);
+	arr=JSON.parse(player);
+	var r=new Array();
+	for(var i=0;i<arr.length;i++)
+	{
+		r[arr[i].id]=arr[i].name;
+	}
+	return r;
+}
+function getTeam()
+{
+	var team=window.localStorage.getItem("team");
+	//alert(team);
+	var teamdate=window.localStorage.getItem("teamdate");
+	return JSON.parse(team);
+}
+function getTeamTitle(t)
+{
+	var team=getTeam();
+	var ttitle='';
+	for(var i=0;i<team.length;i++)
+	{
+		if(isNaN(team[i].title) && team[i].id==t)
+		{	ttitle=team[i].title;
+			break;
+		}
+	}
+	return ttitle;
+}
+
+</script>
+</body>
+</html>

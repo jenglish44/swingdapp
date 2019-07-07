@@ -1,0 +1,84 @@
+﻿<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Swing D | Baseball Game Data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Swing Data , SwingD" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="css/bounce_animate.css" rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+</head>
+<body class="index_back">
+	<!--banner-starts-here-->
+	<div class="banner" id="home">
+		<div class="container">
+			<!--<div class="header">
+				<div class="header-left">
+					<a href="index.html">
+                    <img src="images/logo.png" alt="">
+                    SwingD
+                    </a>
+				</div>
+				<div class="menu">
+                     <a class="toggleMenu" href="#"><img src="images/menu-icon.png" alt="" /> </a>
+					<ul class="nav" id="nav">
+						<li><a href="#home" class="active scroll">HOME</a></li>
+						<li style="display:none;"><a href="#feature" class="scroll">FEATURES</a></li>
+                        <li><a href="#pitch" class="scroll hidden" id="pitch_link">pitch</a></li>
+                        <li><a href="#dataupdate" class="scroll hidden" id="dataupdate_link">dataupdate</a></li>
+						<li><a class="scroll" href="dataupload.html">UPLOAD</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>-->
+            <div class="menu">
+            	<!--<ul class="nav" id="nav" style="margin:5px;">
+					<li><a class="scroll" href="dataupload.html">UPLOAD</a></li>
+                </ul>-->
+            </div>
+			<div class="banner-bottom bounceInLeft">
+				<h1>Swing data!</h1>
+                <!--<p>Batting Practice</p>-->
+                <p>
+                <a class="scroll greenlink clink" href="javascript:void(0);" id="cage_link" >Start Batting Practice</a>
+                <a class="scroll greenlink glink" href="game_play.html" >Start Game</a>
+                </p>
+			</div>
+		</div>
+	</div>
+	<!--banner-ends-here-->
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+//window.localStorage.setItem("hitter",null);
+	var u=JSON.parse(window.localStorage.getItem("user"));
+	//alert(u.user_name);
+	$('h1').html('Hi! '+u.user_name);
+	if(u.user_group=='Basic')
+	{
+		$('.clink').hide();
+	}
+	else
+	{
+		$('.clink').show();
+	}
+	$('#cage_link').click(function(){
+		if(u.user_group=='Rookie')
+			window.location='subscribe.html';
+		else
+			window.location='cageform.html';
+	});
+});
+</script>
+</body>
+</html>

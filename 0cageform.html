@@ -1,0 +1,186 @@
+﻿<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Swing D | Baseball Game Data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Swing Data , SwingD" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script language="javascript">
+$( document ).ready(function() {
+var d=new Date();
+$('#month').val(d.getMonth()+1);
+$('#day').val(d.getDate());
+$('#ccyear').val(d.getFullYear());
+});
+</script>
+</head>
+<body>
+	<!--banner-starts-here-->
+	<div class="banner wow bounce" data-wow-delay="0.1s" id="home">
+		<div class="container">
+			<div class="header">
+				<div class="header-left">
+					<a href="index.html">
+                    <!--<img src="images/logo.png" alt="">-->
+                    SwingD
+                    </a>
+				</div>
+				<div class="menu">
+                     <a class="toggleMenu" href="#"><img src="images/menu-icon.png" alt="" /> </a>
+					<ul class="nav" id="nav">
+						<li><a href="index.html" class="active scroll">HOME</a></li>
+						<!--<li style="display:none;"><a href="#feature" class="scroll">FEATURES</a></li>-->
+                        <li><a href="pitch.html" class="scroll hidden" id="pitch_link">pitch</a></li>
+                        <li><a href="#dataupdate" class="scroll hidden" id="dataupdate_link">dataupdate</a></li>
+						<li><a class="scroll" href="dataupload.html">UPLOAD</a></li>
+						<li><a class="scroll" href="contact.html">CONTACT</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="content wow bounce" data-wow-delay="0.1s">
+            	<div id="cageform_container">
+                <form action="" id="cagehit_form">
+                	<p>
+                	<label>Date</label>
+                    <select name="month" id="month">
+                    	<option value="">Month</option>
+                    	<option value="1">January</option>
+                    	<option value="2">February</option>
+                    	<option value="3">March</option>
+                    	<option value="4">April</option>
+                    	<option value="5">May</option>
+                    	<option value="6">June</option>
+                    	<option value="7">July</option>
+                    	<option value="8">August</option>
+                    	<option value="9">September</option>
+                    	<option value="10">October</option>
+                    	<option value="11">November</option>
+                    	<option value="12">December</option>
+                    </select>
+                    <select name="day" id="day">
+                    	<option value="">Day</option>
+                    	<option value="01">1</option>
+                    	<option value="02">2</option>
+                    	<option value="03">3</option>
+                    	<option value="04">4</option>
+                    	<option value="05">5</option>
+                    	<option value="06">6</option>
+                    	<option value="07">7</option>
+                    	<option value="08">8</option>
+                    	<option value="09">9</option>
+                    	<option value="10">10</option>
+                    	<option value="11">11</option>
+                    	<option value="12">12</option>
+                    	<option value="13">13</option>
+                    	<option value="14">14</option>
+                    	<option value="15">15</option>
+                    	<option value="16">16</option>
+                    	<option value="17">17</option>
+                    	<option value="18">18</option>
+                    	<option value="19">19</option>
+                    	<option value="20">20</option>
+                    	<option value="21">21</option>
+                    	<option value="22">22</option>
+                    	<option value="23">23</option>
+                    	<option value="24">24</option>
+                    	<option value="25">25</option>
+                    	<option value="26">26</option>
+                    	<option value="27">27</option>
+                    	<option value="28">28</option>
+                    	<option value="29">29</option>
+                    	<option value="30">30</option>
+                    	<option value="31">31</option>
+                    </select>
+                    <select name="ccyear" id="ccyear">
+                    	<option value="">Year</option>
+                    	<option value="2015">2015</option>
+                    	<option value="2016">2016</option>
+                    	<option value="2017">2017</option>
+                    	<option value="2018">2018</option>
+                    	<option value="2019">2019</option>
+                    	<option value="2020">2020</option>
+                    </select>
+                    </p>
+                    <p>
+                    <label>Hitter</label>
+                    <select name="hitter" id="hitter">
+                    <option value="">Hitter</option>
+                    <option value="1">Alexis</option>
+                    <option value="2">Annie</option>
+                    </select>
+                    </p>
+                    <p>
+                    <label>Pitch</label>
+                    <select name="pitch" id="pitch">
+                    <option value="">Pitch Distance</option>
+                    <option value="12">12 Feet</option>
+                    <option value="15">15 Feet</option>
+                    </select>
+                    </p>
+                    <p>
+                    <label>Note</label>
+                    <textarea name="game_note" id="game_note" placeholder="Note"></textarea>
+                    </p>
+                    <p>
+                    <input type="button" name="cont_btn" id="cont_btn" value="Continue" class="submit_btn"/>
+                    </p>
+                </form>
+                </div>
+               </div>
+		</div>
+	</div>
+	<!--banner-ends-here-->
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var h=window.localStorage.getItem("hitter");
+	if(h!=null)
+	{
+		//alert(h);
+		hitter=JSON.parse(h);
+		$('#pitch_type').val(hitter[hitter.length-1].ptype);
+	}
+
+	$('#cont_btn').click(function(){
+		var h=window.localStorage.getItem("hitter");
+		//h=null;
+		if(h==null)
+		{
+			/*h=new Array();
+			h[0]=new Array();
+			h[0]['id']=$('#hitter').val();
+			h[0]['edate']=$('#ccyear').val()+'-'+$('#month').val()+'-'+$('#day').val();*/
+			var h=[
+				{'id':$('#hitter').val(),'edate':$('#ccyear').val()+'-'+$('#month').val()+'-'+$('#day').val(),'pitch':{},'game_note':$('#game_note').val(),'ptype':$('#pitch').val()}
+				];
+				//alert(JSON.stringify(h));
+			window.localStorage.setItem("hitter",JSON.stringify(h));
+		}
+		else
+		{
+			//alert(h);
+			hitter=JSON.parse(h);
+			var arr={'id':$('#hitter').val(),'edate':$('#ccyear').val()+'-'+$('#month').val()+'-'+$('#day').val(),'pitch':{},'game_note':$('#game_note').val(),'ptype':$('#pitch').val()};
+			hitter.push(arr);
+			window.localStorage.setItem("hitter",JSON.stringify(hitter));
+			//alert(hitter[srl]['id']);
+		}
+		//$('#pitch_link').click();
+		window.location.href='pitch.html?p=1';
+	});
+});
+</script>
+</body>
+</html>

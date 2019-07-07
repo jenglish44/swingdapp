@@ -1,0 +1,133 @@
+﻿<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Swing D | Baseball Game Data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Swing Data , SwingD" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+	<div id="preloader">
+    	<img src="images/loading.gif" /><br/>
+    	<p>Loading content.. please wait</p>
+    </div>
+	<!--banner-starts-here-->
+	<div class="banner page-content subscribe_back bounce" data-wow-delay="0.1s" id="home">
+    	<!--header start -->
+        <div class="header">
+            <a href="#" class="show-sidebar"></a>
+            <a href="#" class="hide-sidebar"></a>   
+          <p class="header_title">Subscribe</p>
+            <!--<a href="contact.html" class="header-mail"></a>-->
+            <a href="tel:123456" class="header-call"></a>
+        </div>
+  <!--header end -->
+		<div class="container ">
+			<div class="content wow bounce" data-wow-delay="0.1s">
+            	<p>Upgrade your rookie membership to access this service!</p>
+            	<div class="member_plan rookie" style="background:#ccc;">
+                	<h3>Rookie</h3>
+                    <p>Limited member</p>
+                    <ul class="feature_list">
+                    	<li class="yes_opt">Add Game Data: <span class="highlight">Unlimited</span></li>
+                    	<li class="yes_opt">Add BP Data : <span class="highlight">Not Available</span></li>
+                    	<li class="yes_opt">View Data Analysis : <span class="highlight">Team, Last Game</span></li>
+                    </ul>
+                    <div class="price_text" style="background:#adadad;">Cost: Free</div>
+                </div>
+            	<div class="member_plan club">
+                	<h3>Club</h3>
+                    <p>Limited member</p>
+                    <ul class="feature_list">
+                    	<li class="yes_opt">Add Game Data: <span class="highlight">Unlimited</span></li>
+                    	<li class="yes_opt">Add BP Data : <span class="highlight">Unlimited</span></li>
+                    	<li class="yes_opt">View Data Analysis : <span class="highlight">Team, Last Game and BP Session</span></li>
+                    </ul>
+                    <div class="price_text">Cost: $60/yr</div>
+                	<a class="subscribe_btn " id="subscribe_club" >Subscribe</a>
+                     <input type="hidden" id="club_amount" name="club_amount" value="60" />
+               </div>
+<div class="member_plan professional">
+                	<h3>Professional</h3>
+                    <p>All Access member</p>
+                    <ul class="feature_list">
+                    	<li class="yes_opt">Add Game Data : <span class="highlight">Unlimited</span></li>
+                    	<li class="yes_opt">Add BP Data : <span class="highlight">Unlimited</span></li>
+                    	<li class="yes_opt">View Data Analysis : <span class="highlight">All team PLUS individual players for All Games and BP Sessions</span></li>
+                    </ul>
+                    <div class="price_text">Cost: $120/yr</div>
+                    <a class="subscribe_btn " id="subscribe_pro" >Subscribe</a>
+                    <input type="hidden" id="pro_amount" name="pro_amount" value="120" />
+                </div>
+                
+            	<div class="member_plan professional_plus">
+                	<h3>Professional Plus</h3>
+                    <p>All Access member</p>
+                    <ul class="feature_list">
+                    	<li class="yes_opt">Game Data : <span class="highlight">Unlimited Games by SwingD Pro Staff</span></li>
+                    	<li class="yes_opt">Add BP Data: <span class="highlight">Unlimited BP Sessions</span></li>
+                    	<li class="yes_opt">View Data Analysis : <span class="highlight">All team PLUS individual players for All Games and BP Sessions</span></li>
+                    </ul>
+                     <div class="price_text" style="width:100%;">Contact SwingD Pro Stuff V.P.</div>
+                    <input type="hidden" id="proplus_amount" name="proplus_amount" value="" />
+               </div>
+               <!--<input type="hidden" id="mtype" name="mtype" value="" />-->
+           </div>
+                <div class="footer">
+                    <div class="footer-right">
+                    </div>
+                </div><!--eof footer -->
+		</div>
+	</div>
+	<!--banner-ends-here-->
+    <div id="toPopup"> 
+        <div class="close"></div>
+       	<span class="ecs_tooltip">Press Esc to close <span class="arrow"></span></span>
+		<div id="popup_content"> <!--your content start-->
+            You have choosen . Press Yes to confirm.
+            <div>
+            <input type="hidden" name="confirm_type" id="confirm_type" value="confirmout" />
+            <input type="button" name="confirm_btn" id="confirm_btn1" value="No" class="grey_btn confirm_btn"/>
+            <input type="button" name="confirm_btn" id="confirm_btn2" value="Yes" class="red_btn confirm_btn"/>
+            </div>
+        </div> <!--your content end-->
+    </div> <!--toPopup end-->
+	<div class="loader"></div>
+   	<div id="backgroundPopup"></div>
+<!--sidebar starts -->
+<div class="page-sidebar">
+</div>
+<!--sidebar ends here-->
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="js/slide_panel.js"></script>
+<script type="text/javascript" src="js/popup.js"></script>
+<script type="text/javascript" src="js/general.js"></script>
+<script src="phonegap.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$('.subscribe_btn').click(function(){
+		var mtype=$(this).attr('id').replace('subscribe_','');
+		window.localStorage.setItem("mtype",mtype);
+		window.localStorage.setItem("mpay",$('#'+mtype+'_amount').val());
+		gotopage('checkout.html');
+	});
+	
+});
+
+</script>
+</body>
+</html>

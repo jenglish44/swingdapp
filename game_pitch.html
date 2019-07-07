@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Swing D | Baseball Game Data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Swing Data , SwingD" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="css/bounce_animate.css" rel='stylesheet' type='text/css' />
+
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+</head>
+<body ontouchstart="">
+	<div id="preloader">
+    	<img src="images/loading.gif" /><br/>
+    	<p>Loading content.. please wait</p>
+    </div>
+	<!--banner-starts-here-->
+	<div class="banner page-content game_back" data-wow-delay="0.1s" id="home">
+    	<!--header start -->
+        <div class="header">
+            <a href="#" class="show-sidebar"></a>
+            <a href="#" class="hide-sidebar"></a>   
+            <!--<a href="contact.html" class="header-mail"></a>-->
+            <p class="team_title"></p>
+            <a href="tel:123456" class="header-call"></a>
+        </div>
+  <!--header end -->
+        <form action="" id="presult_form">
+		<div class="container">
+			<div class="header board_header">
+                <div id="gameboard">
+                	<div>
+                    	<label id="gb_hitter_label">Hitter</label>
+                        <input type="text" name="sgb_hitter" id="sgb_hitter" class="scoreyellow" readonly="readonly" />
+                        <select name="gb_hitter" id="gb_hitter" class="scoreyellow" style="display:none;">
+                        	<option value="">-Select-</option>
+                        </select>
+                        <select name="gb_team" id="gb_team" class="hidden"></select>
+                    </div>
+                    <div class="clearfix"> </div>
+                    <div class="gb_left">
+                    	<label>Inning</label>
+                        <br />
+                        <input type="text" name="gb_inning" id="gb_inning" class="scoreyellow" value="" />
+						<br />
+                    	<label>Outs</label>
+                        <br />
+                        <input type="text" name="gb_out" id="gb_out" value="" class="scoreyellow"/>
+                    
+                    </div>
+                    <div class="gb_right">
+                    	<label>Balls</label><br />
+                        <input type="text" name="gb_ball" id="gb_ball" value="" class="scoreyellow"/>
+						<br />
+                    	<label>Strikes</label><br />
+                        <input type="text" name="gb_strike" id="gb_strike" value="" class="scoreyellow"/>
+                    
+                    </div>
+                    <div class="clearfix"> </div>
+                </div><!--eof gameboard -->
+			</div>
+			<div class="content wow bounce" data-wow-delay="0.1s">
+            	<div id="gamepitch_container" class="active_pitch bounceInLeft">
+            	<h3>Pitch Result</h3>
+            	<div id="gameform_container" class="cgform">
+                	<div class="newspaper">
+                    	<a class="presult" result="SS" >Strike Swinging</a>
+                    	<a class="presult" result="ST">Strike Taken</a>
+                    	<a class="presult" result="BS">Ball Swinging</a>
+                    	<a class="presult" result="BT">Ball Taken</a>
+                    </div>
+                </div>
+                </div><!--pitch container -->
+                <!--pitch option -->
+                <div id="pitchoption_container" class="bounceInLeft">
+                	<div id="strikeswing_container">
+                        <h3>Strike Swinging Outcome</h3>
+                        <div class="cgform">
+                            <div>
+                                    <a class="gresult" result="SSM" >Swing and miss</a>
+                                    <a class="gresult" result="SFB" >Foul Ball</a>
+                            </div>
+                            <div class="newspaper">
+                                    <div class="newspaper_heading" >OUT</div>
+                                    <a class="gresult" result="SFBO" >Fly Ball</a>
+                                    <a class="gresult" result="SLDO" >Line Drive</a>
+                                    <a class="gresult" result="SHGBO" >Hard Grd Ball</a>
+                                    <a class="gresult" result="SGBO" >Ground Ball</a>
+                                    <a class="gresult" result="SLFBO" >Long Fly Ball</a>
+                                    <div class="newspaper_heading">HIT</div>
+                                    <a class="gresult" result="SFBH" >Fly Ball</a>
+                                    <a class="gresult" result="SLDH" >Line Drive</a>
+                                    <a class="gresult" result="SHGBH" >Hard Grd Ball</a>
+                                    <a class="gresult" result="SSH" >Slap</a>
+                                    <a class="gresult" result="SLFBH" >Long Fly Ball</a>
+                            </div>  
+                            <div>        
+                                    <a class="gresult" result="SWH" >Infield Hit or Reach on Error</a>
+                            </div>
+                        </div>
+                    </div>
+                	<div id="striketaken_container" class="bounceInLeft">
+                        <h3>Strike Taken Outcome</h3>
+                        <div class="cgform">
+                            <p>
+                                <a class="gresult" result="CS" >Called Strike</a>
+                                <a class="gresult" result="SOL">Strike Out Looking</a>
+                                <a class="gresult" result="SBC">Bad call. Actually a ball.</a>
+                            </p>
+                    </div>
+                    </div>
+                	<div id="ballswing_container" class="bounceInLeft">
+                        <h3>Ball Swinging Outcome</h3>
+                        <div class="cgform">
+                        <div>
+                                <a class="gresult" result="BSM" >Swing and miss</a>
+                                <a class="gresult" result="BFB">Foul Ball</a>
+                        </div>
+                        <div class="newspaper">
+                        <div class="newspaper_heading">OUT</div>
+                                <a class="gresult" result="BFBO" >Fly Ball</a>
+                                <a class="gresult" result="BLDO" >Line Drive</a>
+                                <a class="gresult" result="BHGBO" >Hard Gnd Ball</a>
+                                <a class="gresult" result="BGBO" >Ground Ball</a>
+                                <a class="gresult" result="BLFBO" >Long Fly Ball</a>
+                        <div class="newspaper_heading">HIT</div>
+                                <a class="gresult" result="BFBH" >Fly Ball</a>
+                                <a class="gresult" result="BLDH" >Line Drive</a>
+                                <a class="gresult" result="BHGBH" >Hard Gnd Ball</a>
+                                <a class="gresult" result="BSH" >Slap hit</a>
+                                <a class="gresult" result="BLFBH" >Long Fly Ball</a>
+                         </div>
+                         <div>       
+                                <a class="gresult" result="BWH">Infield Hit or Reach on Error</a>
+                         </div>       
+                        </div>
+                    </div>
+                	<div id="balltaken_container" class="bounceInLeft">
+                        <h3>Ball Taken Outcome</h3>
+                        <div class="cgform">
+                            <p>
+                                <a class="gresult" result="BB" >Ball</a>
+                                <a class="gresult" result="BW">Walk</a>
+                                <a class="gresult" result="HBP">HBP</a>
+                                <a class="gresult" result="BBC">Bad call. Actually a strike</a>
+                            </p>
+                       </div>
+                </div>
+                </div>
+                <!--eof pitch option-->                
+                <!--batter container-->
+                <div id="batter_container">
+                	<div id="batter_content">
+                	<div id="batter_box">
+                    	Select 
+                    	<select name="ch_batter" id="ch_batter">
+                        	<option value="">-New Batter-</option>
+                        </select>
+                        <div class="button_container">
+                        <input type="button" name="cancel_btn" id="cancel_btn" value="Cancel" class="red_btn"/>
+                        </div>
+                    </div>
+                    </div>
+                 <div id="batter_back"></div>
+                </div>
+               <!--eof batter container -->
+               </div>
+                <div class="footer">
+                     <input type="button" name="back_btn" id="back_btn" value="Undo" class="back_btn"/>
+                     <input type="button" name="summary_btn" id="summary_btn" value="Summary" class="grey_btn"/>
+                    <input type="button" name="nb_btn" id="nb_btn" value="Batter" class="green_btn"/>
+                    <input type="button" name="out_btn" id="out_btn" value="Out" class="red_btn"/>
+                    <input type="button" name="end_btn" id="end_btn" value="End Game" class="yellow_btn"/>
+                </div>
+		</div>
+      </form>
+	</div>
+	<!--banner-ends-here-->
+    <div id="toPopup"> 
+        <div class="close"></div>
+       	<span class="ecs_tooltip">Press Esc to close <span class="arrow"></span></span>
+		<div id="popup_content"> <!--your content start-->
+            Another out for this team. Press Yes to confirm.
+            <div>
+            <input type="hidden" name="confirm_type" id="confirm_type" value="confirmout" />
+            <input type="button" name="confirm_btn" id="confirm_btn1" value="No" class="grey_btn confirm_btn"/>
+            <input type="button" name="confirm_btn" id="confirm_btn2" value="Yes" class="red_btn confirm_btn"/>
+            </div>
+        </div> <!--your content end-->
+    </div> <!--toPopup end-->
+	<div class="loader"></div>
+   	<div id="backgroundPopup"></div>
+    <input type="hidden" id="bs" value="0" />
+<!--sidebar starts -->
+<div class="page-sidebar">
+</div>
+<!--sidebar ends here-->
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="js/slide_panel.js"></script>
+<script type="text/javascript" src="js/popup.js"></script>
+<script type="text/javascript" src="js/general.js"></script>
+<script src="phonegap.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	showScore();
+	$('.presult, .gresult, #logout_icon').attr('href','javascript:void(0);');
+	
+	$('.presult').click(function(){
+		$('.presult.active').removeClass('active');
+		var pr=$(this).attr('result');
+		var srl=window.localStorage.getItem("gamesrl");
+		var g=window.localStorage.getItem("game");
+		var game=JSON.parse(g);
+		var bs=$('#bs').val();
+		if(bs=='n')
+			bs=numProps(game[srl].stat)-1;
+		$('#pitchoption_container').show();
+		$('#gamepitch_container').hide();
+		if(typeof(game[srl].stat[bs])=='undefined')
+			game[srl].stat[bs]={'t':$('#gb_team').val(),'i':$('#gb_inning').val(),'b':$('#gb_hitter').val(),'bl':$('#gb_ball').val(),'o':$('#gb_out').val(),'s':$('#gb_strike').val(),'r1':pr};
+		else
+			game[srl].stat[bs].r1=pr;
+			
+			//
+				game[srl].cteam=$('#gb_team').val();
+				game[srl].cinning=$('#gb_inning').val();
+				game[srl].cbatter=$('#gb_hitter').val();
+				game[srl].cball=$('#gb_ball').val();
+				game[srl].cout=$('#gb_out').val();
+				game[srl].cstrike=$('#gb_strike').val();
+			//
+			
+		if(pr=='SS')
+			$('#strikeswing_container').show();
+		if(pr=='ST')
+			$('#striketaken_container').show();
+		if(pr=='BS')
+			$('#ballswing_container').show();
+		if(pr=='BT')
+			$('#balltaken_container').show();
+		if(game[srl].stat[bs].r!="")
+			$('a[result="'+game[srl].stat[bs].r+'"]').addClass('active');
+		window.localStorage.setItem("game",JSON.stringify(game));
+	});
+	$('.gresult').click(function(){
+		$('.gresult.active').removeClass('active');
+		var o=$(this).attr('result');
+		
+		var srl=window.localStorage.getItem("gamesrl");
+		var g=window.localStorage.getItem("game");
+		var game=JSON.parse(g);
+		var bs=$('#bs').val();
+		if(bs==0)
+			bs=numProps(game[srl].stat)-1;
+
+		if(typeof(game[srl].stat[bs])=='undefined')
+		{
+			game[srl].stat[bs]={'t':$('#gb_team').val(),'i':$('#gb_inning').val(),'b':$('#gb_hitter').val(),'bl':$('#gb_ball').val(),'o':$('#gb_out').val(),'s':$('#gb_strike').val(),'r':o};
+		}
+		else
+		{
+			game[srl].stat[bs].r=o;
+			game[srl].stat[bs].bl=$('#gb_ball').val();
+			game[srl].stat[bs].o=$('#gb_out').val();
+			game[srl].stat[bs].s=$('#gb_strike').val();
+		}
+
+		window.localStorage.setItem("game",JSON.stringify(game));
+
+		if(o=='SSM' || o=='CS' || o=='SBC' || o=='BSM' )
+		{
+			$('#gb_strike').val(eval($('#gb_strike').val())+eval(1));
+		}
+		if(o=='BB' || o=='BBC')
+		{
+			$('#gb_ball').val(eval($('#gb_ball').val())+eval(1));
+		}
+		if(o=='SFB' || o=='BFB')
+		{
+			if(eval($('#gb_strike').val())<2)
+			{
+				$('#gb_strike').val(eval($('#gb_strike').val())+eval(1));
+			}
+		}
+		game[srl].cball=$('#gb_ball').val();
+		game[srl].cstrike=$('#gb_strike').val();
+
+		if(o=='SGBO' ||o=='SFBO' ||o=='SLDO' ||o=='SHGBO' ||o=='SLFBO' ||o=='SOL' ||o=='BGBO' ||o=='BFBO' ||o=='BLDO' ||o=='BHGBO' ||o=='BLFBO')
+		{
+			outbatter(0);
+		}
+		if(o=='SFBH' || o=='SHGBH' || o=='SLFBH' || o=='SLDH' || o=='SSH' || o=='SWH' || o=='BFBH' || o=='BHGBH' || o=='BLFBH' || o=='BLDH' || o=='BSH' || o=='BWH' || o=='BW' || o=='HBP')
+		{
+			newbatter();
+		}
+		if($('#gb_strike').val()>=3)
+		{
+			outbatter(0);
+		}
+		if($('#gb_ball').val()>=4)
+			newbatter();
+
+		bs=eval(bs)+eval(1);
+		$('#bs').val(eval(bs));
+		game[srl].cteam=$('#gb_team').val();
+		game[srl].cinning=$('#gb_inning').val();
+		game[srl].cbatter=$('#gb_hitter').val();
+		//last batter
+		if(game[srl].team==$('#gb_team').val())
+		{
+			game[srl].lhbatter=$('#gb_hitter').val();
+		}
+		else
+			game[srl].lvbatter=$('#gb_hitter').val();
+		//
+		game[srl].cball=$('#gb_ball').val();
+		game[srl].cout=$('#gb_out').val();
+		game[srl].cstrike=$('#gb_strike').val();
+
+
+
+		game[srl].stat[bs]={'t':$('#gb_team').val(),'i':$('#gb_inning').val(),'b':$('#gb_hitter').val(),'bl':$('#gb_ball').val(),'o':$('#gb_out').val(),'s':$('#gb_strike').val(),'r1':'','r':''};
+		window.localStorage.setItem("game",JSON.stringify(game));
+		
+		$('#pitchoption_container, #strikeswing_container,#striketaken_container,#ballswing_container,#balltaken_container').hide();
+		$('#gamepitch_container').show();
+	});
+	
+	$('#ch_batter').change(function(){
+		//confirmchangebo();
+		changebo();
+	});
+	$('#cancel_btn').click(function(){
+		$('#batter_container').hide();
+	});
+	$('#nb_btn').click(function(){
+		selectbatter();
+	});
+	readypopup();
+	$('#back_btn').click(function(){
+		var g=window.localStorage.getItem("game");
+		var game=JSON.parse(g);
+		var srl=window.localStorage.getItem("gamesrl");
+		var c=$('#bs').val();
+		if(c=='n')
+			c=numProps(game[srl].stat)-1;
+		else
+			c=c-1;
+		if(c<0 || (c==0 && game[srl].stat[c]===undefined))
+			confirmgoback();
+		else
+			confirmundo();
+	});
+	$('#summary_btn').click(function(){
+		var g=window.localStorage.getItem("game");
+		gotopage('game_summary.html');
+	});
+	$('#logout_icon').click(function(){
+		confirmlogout();
+	});
+
+	$('#out_btn').click(function(){
+		confirmout();
+	});
+	$('#end_btn').click(function(){
+		confirmover();
+	});
+});
+function changebo()
+{
+		var srl=window.localStorage.getItem("gamesrl");
+		var g=window.localStorage.getItem("game");
+		var game=JSON.parse(g);
+		var bs=$('#bs').val();
+		if(bs==0)
+			bs=numProps(game[srl].stat)-1;
+		var pb=$('#gb_hitter').val();
+		var nb=$('#ch_batter').val();
+		var p=getPlayer();
+		if(p!=null)
+		{
+			for(var i=0;i<p.length;i++)
+			{
+				if(p[i].id==pb)
+					var ptmp=i;
+				if(p[i].id==nb)
+					var ntmp=i;
+			}
+		}
+		if(ptmp!==undefined && ntmp!==undefined)
+		{
+			var tmp=p[ntmp].bo;
+			p[ntmp].bo=p[ptmp].bo;
+			p[ptmp].bo=tmp;
+		}
+		p=sortPlayer(p);
+		window.localStorage.setItem("player",JSON.stringify(p));
+		showPlayer($('#gb_team').val());
+		
+		$('#ch_batter, #gb_hitter').val(nb);
+		$('#sgb_hitter').val($('#gb_hitter option:selected').text());
+		$('#gb_ball, #gb_strike').val(0);
+		$('#batter_container').hide();
+		var g=window.localStorage.getItem("game");
+		var game=JSON.parse(g);
+
+		var srl=window.localStorage.getItem("gamesrl");
+	
+		game[srl].cbatter=$('#ch_batter').val();
+		game[srl].stat[bs].b=$('#ch_batter').val();
+		game[srl].stat[bs].bl=0;
+		game[srl].stat[bs].s=0;
+		
+		window.localStorage.setItem("game",JSON.stringify(game));
+}
+function changebatter()
+{
+		var pb=$('#gb_hitter').val();
+		var nb=$('#ch_batter').val();
+		var bs=$('#bs').val();
+		if(bs==0)
+			bs=numProps(game[srl].stat)-1;
+
+		
+		$('#ch_batter, #gb_hitter').val(nb);
+		$('#sgb_hitter').val($('#gb_hitter option:selected').text());
+		$('#gb_ball, #gb_strike').val(0);
+		$('#batter_container').hide();
+		var g=window.localStorage.getItem("game");
+		var game=JSON.parse(g);
+
+		var srl=window.localStorage.getItem("gamesrl");
+	
+		game[srl].cbatter=$('#ch_batter').val();
+		game[srl].stat[bs].b=$('#ch_batter').val();
+		game[srl].stat[bs].bl=0;
+		game[srl].stat[bs].s=0;
+		
+		window.localStorage.setItem("game",JSON.stringify(game));
+}
+function initbtn()
+{
+	$('.confirm_btn').click(function(){
+		disablePopup();
+		if($(this).val()=='Yes' && $('#confirm_type').val()=='confirmout')
+		{
+			outbatter(1);
+			//newbatter();
+		}
+		if($(this).val()=='Yes' && $('#confirm_type').val()=='confirmover')
+		{
+			var srl=window.localStorage.getItem("gamesrl");
+			var g=window.localStorage.getItem("game");
+			var game=JSON.parse(g);
+			var bs=$('#bs').val();
+			delete game[srl].stat[bs];
+			gotopage('game_summary.html');
+		}
+		if($(this).val()=='Yes' && $('#confirm_type').val()=='confirmgoback')
+		{
+			var srl=window.localStorage.getItem("gamesrl");
+			gotopage('game_play.html?g='+srl);
+		}
+		if($(this).val()=='Yes' && $('#confirm_type').val()=='confirmchangebo')
+		{
+			changebo();
+		}
+		if($(this).val()=='No' && $('#confirm_type').val()=='confirmchangebo')
+		{
+			changebatter();
+		}
+		if($(this).val()=='Yes' && $('#confirm_type').val()=='confirmundo')
+		{
+			var g=window.localStorage.getItem("game");
+			var game=JSON.parse(g);
+			var srl=window.localStorage.getItem("gamesrl");
+			var g=window.localStorage.getItem("game");
+			var game=JSON.parse(g);
+			var bs=$('#bs').val();
+			var tm=0;
+			if(game[srl].stat[bs].t==game[srl].team)
+			{	
+				tm=game[srl].stat[bs].t;
+				game[srl].lhbatter=0;
+			}
+			else
+			{
+				tm=game[srl].stat[bs].t;
+				game[srl].lvbatter=0;
+			}
+			//else
+			delete game[srl].stat[bs];
+			bs=bs-1;
+			var lb=o=0;
+			var num=numProps(game[srl].stat)-1;
+			for(var i=num;i>=0;i--)
+			{
+				if(game[srl].stat[i].t==tm)
+				{
+					if(tm==game[srl].team)
+						game[srl].lhbatter=game[srl].stat[i].b;
+					if(tm==game[srl].vteam)
+						game[srl].lvbatter=game[srl].stat[i].b;
+					break;
+				}
+			}
+			
+			if(bs<0)
+			{
+				window.localStorage.setItem("game",JSON.stringify(game));
+				gotopage('game_play.html?g='+srl);
+			}
+			else
+			{
+				if(game[srl].stat[bs].t==game[srl].team)
+					game[srl].lhbatter=game[srl].stat[bs].b;
+				else
+					game[srl].lvbatter=game[srl].stat[bs].b;
+				game[srl].stat[bs].r='';
+				game[srl].stat[bs].r1='';
+				window.localStorage.setItem("game",JSON.stringify(game));
+				gotopage('game_pitch.html?g='+srl+'&s='+bs);
+			}
+
+		}
+	});
+}
+function outbatter(btn)
+{
+	if(btn===undefined)
+		btn=0;
+	var srl=window.localStorage.getItem("gamesrl");
+	var g=window.localStorage.getItem("game");
+	var game=JSON.parse(g);
+	
+	var st=0;
+	var o='TOUT';
+	var bs=$('#bs').val();
+	if(bs==0)
+		bs=numProps(game[srl].stat)-1;
+	$('#gb_out').val(eval($('#gb_out').val())+eval(1));
+	
+	if(btn==1)
+	{
+		if(typeof(game[srl].stat[bs])=='undefined')
+		{
+			game[srl].stat[bs]={'t':$('#gb_team').val(),'i':$('#gb_inning').val(),'b':$('#gb_hitter').val(),'bl':$('#gb_ball').val(),'o':$('#gb_out').val(),'s':$('#gb_strike').val(),'r':o};
+		}
+		else
+		{
+			game[srl].stat[bs].r=o;
+		}
+		bs=eval(bs)+eval(1);
+		$('#bs').val(eval(bs));
+		game[srl].stat[bs]={'t':$('#gb_team').val(),'i':$('#gb_inning').val(),'b':$('#gb_hitter').val(),'bl':$('#gb_ball').val(),'o':$('#gb_out').val(),'s':$('#gb_strike').val(),'r1':'','r':''};
+
+		window.localStorage.setItem("game",JSON.stringify(game));
+	}
+	
+	if($('#gb_out').val()>=3)
+	{
+		if(btn==1)
+		{
+			if(game[srl].team==game[srl].stat[bs].t)
+				game[srl].lhbatter=$('#gb_hitter').val();
+			else
+				game[srl].lvbatter=$('#gb_hitter').val();
+		}
+
+		if($('#gb_team').val()==game[srl].vteam)
+		{
+			$('#gb_team').val(game[srl].team);
+			$('.team_title').html(shorten(getTeamTitle(game[srl].team)));
+			$('#sgb_hitter').click(function(e){ e.preventDefault();newbatter(); });
+		}
+		else
+		{
+			$('#gb_team').val(game[srl].vteam);
+			$('.team_title').html(shorten(getTeamTitle(game[srl].vteam)));
+			$('#gb_inning').val(eval($('#gb_inning').val())+eval(1));
+		}
+		showPlayer($('#gb_team').val());
+		$('#gb_out').val(0);
+		st=1;
+	}
+		game[srl].cteam=$('#gb_team').val();
+		game[srl].cinning=$('#gb_inning').val();
+		game[srl].cout=$('#gb_out').val();
+		game[srl].stat[bs].t=$('#gb_team').val();
+		game[srl].stat[bs].i=$('#gb_inning').val();
+		game[srl].stat[bs].o =$('#gb_out').val();
+	window.localStorage.setItem("game",JSON.stringify(game));
+	
+	if(btn==0 || (btn==1 && st==1))
+		newbatter();
+}
+function newbatter()
+{
+	var srl=window.localStorage.getItem("gamesrl");
+	var g=window.localStorage.getItem("game");
+	var game=JSON.parse(g);
+	
+	var bs=$('#bs').val();
+	var tm=$('#gb_team').val();
+	if(bs==0)
+		bs=numProps(game[srl].stat)-1;
+		var lb=o=0;
+		var num=numProps(game[srl].stat)-1;
+		for(var i=num;i>=0;i--)
+		{
+			if(game[srl].stat[i].t==tm && game[srl].stat[i].r!="")
+			{
+				o=game[srl].stat[i].r;
+				break;
+			}
+		}
+		if(parseInt(game[srl].team)==tm)
+			lb=game[srl].lhbatter;
+		else
+			lb=game[srl].lvbatter;
+		lb=parseInt(lb);
+		if(lb==0)
+		{
+			$('#gb_hitter option[team_id="'+tm+'"]:first').prop('selected',true);
+		}
+		else
+		{
+			if((o=='TOUT') || (game[srl].stat[i].bl==3 && (o=='BB' || o=='BBC')) || (game[srl].stat[i].s==2 && (o=='SSM' || o=='CS' || o=='SBC' || o=='BSM')) || (o=='SGBO' || o=='SFBO' || o=='SLDO' || o=='SHGBO' || o=='SLFBO' || o=='SOL' || o=='BGBO' || o=='BFBO' || o=='BLDO' || o=='BHGBO' || o=='BLFBO' ) || (o=='SFBH' || o=='SHGBH' || o=='SLFBH' || o=='SLDH' || o=='SSH' || o=='SWH' || o=='BFBH' || o=='BHGBH' || o=='BLFBH' || o=='BLDH' || o=='BSH' || o=='BWH' || o=='BW' || o=='HBP'))
+			{
+				
+				if(checkLast(lb,tm))
+					$('#gb_hitter option[team_id="'+tm+'"]:first').prop('selected',true);
+				else
+					$('#gb_hitter option[value="'+lb+'"][team_id="'+tm+'"]').next('option[team_id="'+tm+'"]').prop('selected',true);
+			}
+			else
+			{
+				$('#gb_hitter option[value="'+lb+'"][team_id="'+tm+'"]').prop('selected',true);
+			}
+		}
+		
+		if(game[srl].team==tm)
+		{
+			game[srl].lhbatter=$('#gb_hitter').val();
+		}
+		else
+			game[srl].lvbatter=$('#gb_hitter').val();
+		
+		$('#sgb_hitter').val($('#gb_hitter option:selected').text());
+		$('#gb_ball, #gb_strike').val(0);
+		
+		game[srl].cbatter=$('#gb_hitter').val();
+		game[srl].cball=$('#gb_ball').val();
+		game[srl].cstrike=$('#gb_strike').val();
+		game[srl].stat[bs].b=$('#gb_hitter').val();
+		game[srl].stat[bs].bl=$('#gb_ball').val();
+		game[srl].stat[bs].s =$('#gb_strike').val();
+		window.localStorage.setItem("game",JSON.stringify(game));
+}
+function selectbatter()
+{
+	var team=$('#gb_team').val();
+	$('#ch_batter option').hide();
+	$('#ch_batter option:first').show();
+	$('#ch_batter option[team_id="'+team+'"]').show();
+	$('#batter_container').show();
+}
+function checkLast(player,team)
+{
+	var bg=getURLParameter('g');
+	if(bg!=null)
+		var srl=bg;
+	else
+		var srl=window.localStorage.getItem("gamesrl");
+	var g=window.localStorage.getItem("game");
+	var game=JSON.parse(g);
+	var i=srl=0;
+	$('#gb_hitter option').each(function(){
+		if($(this).val()==player)
+			srl=i;
+		i++;
+	});
+	if(srl>=9)
+		return true;
+	else
+		return false;
+	
+}
+function showoutcome(c)
+{
+	var srl=window.localStorage.getItem("gamesrl");
+	var g=window.localStorage.getItem("game");
+	var game=JSON.parse(g);
+	if(c===undefined)
+	{
+		c=$('#bs').val();
+		if(c=='n')
+			c=numProps(game[srl].stat)-1;
+		else
+			c=c-1;
+		if(c<0 || game[srl].stat[c]===undefined)
+			return '--';
+	}
+	
+		var pres={'SS':'Strike Swinging','BS':'Ball Swinging','ST':'Strike Taken','BT':'Ball Taken',};
+		var res={'BSM':'Swing and Miss','BFB':'Foul Ball','BGBO':'Ground Ball Out','BFBO':'Fly Ball Out','BLDO':'Line Drive Out','BHGBO':'Hard Ground Ball Out','BLFBO':'Long Fly Ball Out','BFBH':'Fly Ball Hit','BHGBH':'Hard Ground Ball Hit','BLFBH':'Long Fly Ball Hit','BLDH':'Line Drive Hit','BSH':'Slap hit','BWH':'Infield Hit or Reach on Error','SSM':'Swing and miss','SFB':'Foul Ball','SGBO':'Ground Ball Out','SFBO':'Fly Ball Out','SLDO':'Line Drive Out','SHGBO':'Hard Ground Ball Out','SLFBO':'Long Fly Ball Out','SFBH':'Fly Ball Hit','SHGBH':'Hard Ground Ball Hit','SLFBH':'Long Fly Ball Hit','SLDH':'Line Drive Hit','SSH':'Slap hit','SWH':'Infield Hit or Reach on Error','CS':'Called Strike','SOL':'Strike Out Looking','SBC':'Bad call. Actually a ball.','BB':'Ball','BW':'Walk','HBP':'HBP','BBC':'Bad call. Actually a strike','TOUT':'Team Out'};
+	var str='';
+	str+=getplayername(game[srl].stat[c].b);
+	str+='&nbsp;&nbsp;&nbsp;&nbsp;';
+	str+='('+$('#gb_ball').val()+'-'+$('#gb_strike').val()+')';
+	str+='&nbsp;&nbsp;&nbsp;&nbsp;';
+	if(pres[game[srl].stat[c].r1]===undefined)
+		str+='';
+	else
+		str+=pres[game[srl].stat[c].r1]+'->';
+	if(res[game[srl].stat[c].r]===undefined)
+		str+='';
+	else
+	str+=res[game[srl].stat[c].r];
+	
+	
+	return str;
+	
+}
+function showScore()
+{
+	var bg=getURLParameter('g');
+	var bs=getURLParameter('s');
+	var fr=getURLParameter('f');
+	if(bg!=null)
+		var srl=bg;
+	else
+		var srl=window.localStorage.getItem("gamesrl");
+	var g=window.localStorage.getItem("game");
+	var game=JSON.parse(g);
+	var str='';
+
+	showTeam();
+	//
+	if(bs==null)
+	{
+		bs=numProps(game[srl].stat)-1;
+	}
+		$('#gb_team').val(game[srl].stat[bs].t);
+		showPlayer($('#gb_team').val());
+		$('.team_title').html(shorten(getTeamTitle(game[srl].stat[bs].t)));
+		$('#gb_hitter').val(game[srl].stat[bs].b);
+		$('#sgb_hitter').val($('#gb_hitter option:selected').text());
+		$('#gb_inning').val(game[srl].stat[bs].i);
+		$('#gb_ball').val(game[srl].stat[bs].bl);
+		$('#gb_out').val(game[srl].stat[bs].o);
+		$('#gb_strike').val(game[srl].stat[bs].s);
+		
+
+		$('#bs').val(bs);
+
+	$('#gb_hitter, #gb_inning, #gb_ball, #gb_out, #gb_strike').attr('readonly',true);
+}
+function getTeam()
+{
+	var team=window.localStorage.getItem("team");
+	var teamdate=window.localStorage.getItem("teamdate");
+	return JSON.parse(team);
+}
+function getTeamTitle(t)
+{
+	var team=getTeam();
+	var ttitle='';
+	for(var i=0;i<team.length;i++)
+	{
+		if(isNaN(team[i].title) && team[i].id==t)
+		{	ttitle=team[i].title;
+			break;
+		}
+	}
+	return ttitle;
+}
+function showPlayer(t)
+{
+	var bg=getURLParameter('g');
+	if(bg!=null)
+		var srl=bg;
+	else
+		var srl=window.localStorage.getItem("gamesrl");
+	var g=window.localStorage.getItem("game");
+	var game=JSON.parse(g);
+	var p=getPlayer();
+	var pstr='<option value="" >-Select-</option>';
+	var pcount=0;
+	if(p!=null)
+	{
+		p=sortPlayer(p);
+		for(var i=0;i<p.length;i++)
+		{
+			if(isNaN(p[i].name) && p[i].team_id==t)
+			{
+				pstr+='<option value="'+p[i].id+'" team_id="'+t+'" >'+p[i].name+'</option>';
+				pcount++;
+			}
+		}
+	}
+	if(pcount<9)
+	{
+		for(var j=(eval(pcount)+eval(1));j<=9;j++)
+			pstr+='<option value="'+j+'" team_id="'+t+'" >'+j+'</option>';
+	}
+	$('#gb_hitter, #ch_batter').html(pstr);
+}
+function showTeam()
+{
+	var t=getTeam();
+	var pstr='';
+	var pcount=0;
+	if(t!=null)
+	{
+		for(var i=0;i<t.length;i++)
+		{
+			if(typeof(t[i])!='undefined' && t[i]!=null)
+			{
+				pstr+='<option value="'+t[i].id+'" >'+t[i].title+'</option>';
+				pcount++;
+			}
+		}
+	}
+	$('#gb_team').append(pstr);
+}
+</script>
+</body>
+</html>

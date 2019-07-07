@@ -1,0 +1,241 @@
+﻿<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Swing D | Baseball Game Data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Swing Data , SwingD" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+	<!--banner-starts-here-->
+	<div class="banner page-content baseball_back bounce" data-wow-delay="0.1s" id="home">
+    	<!--header start -->
+        <div class="header">
+            <a href="#" class="show-sidebar"></a>
+            <a href="#" class="hide-sidebar"></a>   
+          <p class="header_title">Upload Data</p>
+            <!--<a href="contact.html" class="header-mail"></a>-->
+            <a href="tel:123456" class="header-call"></a>
+        </div>
+  <!--header end -->
+		<div class="container ">
+			<div class="content wow bounce" data-wow-delay="0.1s">
+                <form method="post" >
+                <div class="error"></div>
+                
+                        <h3>BILLING ADDRESS</h3>
+                        <div>
+                       <input type="email" name="email" placeholder="Email" required />
+                       </div>
+                       <input type="text" name="phone" placeholder="Phone Number" />
+                       <input type="text" name="fname" placeholder="First Name" required />
+                    <input type="text" name="lname" placeholder="Last Name" required />
+                
+                    <input type="text" name="address" placeholder="Street Address" required />
+                    <select name="country" id="country" required>
+                           <option value="">Select Country</option>
+                        <!-- country list -->
+                    </select>
+                
+                    <input type="text" name="city" placeholder="City" required />
+                    <select name="state" id="state" required>
+                        <option value="">Select State / Province</option>
+                        <!-- state list for the countries -->
+                    </select>
+                
+                       <h3>CREDIT CARD INFORMATION</h3>
+                       <input type="text" name="card" id="credit-card" placeholder="Credit Card No." required />
+                
+                    <span>Expiration Date (MM/YY)</span>
+                    <input type="text" name="mm" class="expire" placeholder="MM" required />
+                    <input type="text" name="yy" class="expire" placeholder="YY" required />
+                
+                    <input type="submit" value="Checkout" />
+                </form>
+               </div>
+                <div class="footer">
+                    <div class="footer-left">
+                     <input type="button" name="clearbutton" id="dataupload_clear" value="Clear" class="red_btn"/>
+                    </div>
+                    <div class="footer-right">
+                   <input type="button" name="dataupload_btn" id="dataupload_btn" value="Upload" class="submit_btn"/>
+                    </div>
+                </div>
+		</div>
+	</div>
+	<!--banner-ends-here-->
+    <div id="toPopup"> 
+        <div class="close"></div>
+       	<span class="ecs_tooltip">Press Esc to close <span class="arrow"></span></span>
+		<div id="popup_content"> <!--your content start-->
+            Another out for this team. Press Yes to confirm.
+            <div>
+            <input type="hidden" name="confirm_type" id="confirm_type" value="confirmout" />
+            <input type="button" name="confirm_btn" id="confirm_btn1" value="No" class="grey_btn confirm_btn"/>
+            <input type="button" name="confirm_btn" id="confirm_btn2" value="Yes" class="red_btn confirm_btn"/>
+            </div>
+        </div> <!--your content end-->
+    </div> <!--toPopup end-->
+	<div class="loader"></div>
+   	<div id="backgroundPopup"></div>
+<!--sidebar starts -->
+<div class="page-sidebar">
+  <div class="page-sidebar-scroll">  
+   	  <a href="tel:123456" class="sidebar-button"><em class="sidebar-button-call">CALL US</em></a>
+  	  <a href="sms:123456" class="sidebar-button"><em class="sidebar-button-text">TEXT US</em></a>
+  	  <a href="javascript:void(0);" class="sidebar-button hide2-sidebar"><em class="sidebar-button-close">COLLAPSE</em></a>
+      <div class="clear"></div>  
+
+      <img class="sidebar-logo replace-2x" src="images/menu_logo.png" alt="img">
+
+      <div class="menu">         
+          <div class="menu-item">
+              <strong class="home-icon"></strong>
+              <a class="menu-disabled" href="index.html">Home</a>
+          </div> 
+          <div class="menu-item">
+              <strong class="home-icon"></strong>
+              <a class="menu-disabled" href="cageform.html">Cage Practice</a>
+          </div> 
+          <div class="menu-item">
+              <strong class="home-icon"></strong>
+              <a class="menu-disabled" href="game_play.html">Start Game</a>
+          </div> 
+          <div class="menu-item">
+              <strong class="home-icon"></strong>
+              <a class="menu-enabled" href="dataupload.html">Upload</a>
+          </div> 
+          
+          
+          <div class="menu-item">
+              <strong class="icon-shadow-game"></strong>
+              <a class="menu-disabled deploy-submenu" href="#">User</a>
+              <div class="clear"></div>
+              <!--<div class="submenu">
+                  <a class="menu-enabled" href="userprofile.html">Update Profile</a>        <em class="submenu-decoration"></em>
+              </div>-->
+              <div class="submenu">
+                  <a class="menu-disabled" href="resetpass.html">Reset Passsword</a>        <em class="submenu-decoration"></em>
+              </div>
+          </div> 
+          
+          <div class="menu-item">
+              <strong class="contact-icon"></strong>
+              <a class="menu-disabled" href="mailto:info@swingd.com?subject=game data">Email</a>
+          </div> 
+           <div class="menu-item">
+              <strong class="admin-icon"></strong>
+              <a class="menu-disabled" href="http://swingd.achievedigital.com/swingadmin/">Reports</a>
+          </div> 
+         
+      </div>
+      
+  	  <a href="https://www.facebook.com/swingd" class="external sidebar-button2"><em class="sidebar-button-facebook">FACEBOOK</em></a>
+  	  <a href="https://www.swingd.com/" class="external sidebar-button2"><em class="sidebar-button-swingd">WEBSITE</em></a>
+      
+      <p class="sidebar-copyright center-text">Copyright 2014. All rights reserved!</p>
+
+      <div class="clear"></div>
+      
+  </div>
+</div>
+<!--sidebar ends here-->
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="js/slide_panel.js"></script>
+<script type="text/javascript" src="js/popup.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#uploading_data, #uploaded_data').hide();
+	
+	$('#dataupload_btn').click(function(){
+		$('#upload_data').hide();
+		//$('#uploading_data').show();
+		$('.notification').html('<img src="images/loading.png" width="25" /> Please wait.. uploading data.').show();
+		var h=window.localStorage.getItem("hitter");
+		hitter=JSON.parse(h);
+		var g=window.localStorage.getItem("game");
+		var u=window.localStorage.getItem("user");
+		user=JSON.parse(u);
+		alert(user.id);
+		//hitter=JSON.parse(h);
+		//var srl=hitter.length-1;
+
+		$.ajax({
+		  url: "http://swingd.achievedigital.com/action/save_data.php",
+		  dataType: 'json',
+		  crossDomain: true,
+		  method: 'POST',
+		  async: false,
+		  data: 'h='+h+'&u='+user.id+'&g='+g,
+		  success: function(c) {
+			//alert(c);
+			//window.localStorage.setItem("hitter",null);
+			if(c.success==1)
+			{
+				$('.notification').html('Data successfully uploaded.');
+				localStorage.removeItem("hitter");
+				localStorage.removeItem("game");
+				localStorage.removeItem("gamesrl");
+			}
+			return true;
+		  },
+		  error: function(xr,msg,errthr)
+		  {
+		  		if(msg!="")
+					$('.notification').html(msg);
+				if(errthr=='Not Allowed')
+					$('.notification').html('No network connction found. Please try later.');
+				else if(errthr!="")
+					$('.notification').html(errthr);
+				
+		  }
+		});
+			return true;
+
+	});
+	
+	$('#dataupload_clear').click(function(){
+		confirmclear();
+	});
+
+});
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+}
+function initbtn()
+{
+
+	$('.confirm_btn').click(function(){
+	disablePopup();
+	
+	if($(this).val()=='Yes')
+		{
+			localStorage.removeItem("hitter");
+			localStorage.removeItem("cur_hitter");
+			localStorage.removeItem("game");
+			localStorage.removeItem("gamesrl");
+			//disablePopup
+			gotopage('index.html');
+		}
+	});
+}
+
+function gotopage(p)
+{
+	window.location=p;
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+﻿<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Swing D | Baseball Game Data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Swing Data , SwingD" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="css/bounce_animate.css" rel='stylesheet' type='text/css' />
+
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+	<div id="preloader">
+    	<img src="images/loading.gif" /><br/>
+    	<p>Loading content.. please wait</p>
+    </div>
+	<!--banner-starts-here-->
+	<div class="banner page-content user_back" id="home">
+    	<!--header start -->
+        <div class="header">
+            <a href="#" class="show-sidebar"></a>
+            <a href="#" class="hide-sidebar"></a>   
+          <p class="header_title">Welcome!</p>
+            <!--<a href="contact.html" class="header-mail"></a>-->
+            <a href="tel:123456" class="header-call"></a>
+        </div>
+  <!--header end -->
+		<div class="container">
+			<div class="banner-bottom bounceInLeft">
+				<h1>Create SwingD Account</h1>
+                <!--<p>Batting Practice</p>-->
+                <form id="user_form">
+                <div id="register_form">
+                	<div class="error notification"></div>
+                	<div>
+                	<label>Email</label>
+                    <input type="email" name="uemail" id="uemail" placeholder="User Email"/>
+                    </div>
+                	<div>
+                	<label>Name</label>
+                    <input type="text" name="uname" id="uname" placeholder="Full Name"/>
+                    </div>
+                    <div>
+                    <label>Password</label>
+                    <input type="password" name="upass" id="upass" placeholder="Password" />
+                    </div>
+                    <div style=" font-size:9px; width:80%; margin-left:10%; align:center; color:#FFFFFF">
+                    <p>By clicking Register, I agree I have read and accept SwingD’s <a href="help.html">Terms of Service</a>, I'm at least 18 years old, and I consent to SwingD’s <a href="help.html">Privacy and Refund policies</a> and to receiving marketing communications from SwingD. 
+                    </p>
+                    
+                    </div>
+               		 <a class="scroll greenlink" id="register_btn" href="javascript:void(0);">Register</a>
+                     <p id="register_text">Please wait ...</p>
+                </div>
+                <p>
+                <!-- (c) 2005, 2016. Authorize.Net is a registered trademark of CyberSource Corporation --> 
+                    <p> <script type="text/javascript" language="javascript">var ANS_customer_id="71bcfe95-1d9d-4b73-ae4a-26ef49803a0a";</script> <script type="text/javascript" language="javascript" src="//verify.authorize.net/anetseal/seal.js" ></script> 
+                    </p>
+                </p>    
+                </form>
+			</div>
+		</div>
+	</div>
+	<!--banner-ends-here-->
+<!--sidebar starts -->
+<div class="page-sidebar">
+</div>
+<!--sidebar ends here-->
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="js/slide_panel.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script src="phonegap.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//var base_url='https://www.swingd.com/action/';
+	var base_url='action/';
+//window.localStorage.setItem("hitter",null);
+	$('#register_btn').click(function(){
+		$('div.error').html('').hide();
+		$('#register_btn').hide();
+		$('#register_text').show();
+		var pstr='u='+$('#uemail').val();
+		pstr+='&n='+$('#uname').val();
+		pstr+='&p='+$('#upass').val();
+		pstr+='&a=basic';
+		
+		$.ajax({
+		  url: base_url+"user_register.php",
+		  dataType: 'json',
+		  crossDomain: true,
+		  method: 'POST',
+		  async: false,
+		  data: pstr,
+		  success: function(data) {
+				if(data.success=='1')
+				{
+					window.localStorage.setItem('user',JSON.stringify(data));
+					window.location='index.html';
+				}
+				else
+				{
+					$('div.error').html(data.msg).show();
+				}
+				$('#register_btn').show();
+				$('#register_text').hide();
+		  },
+		  error: function(xr,msg,errthr)
+		  {
+		  		if(msg!="")
+					$('div.error').html(msg);
+				if(errthr=='Not Allowed')
+					$('div.error').html('No network connction found. Please try later.');
+				else if(errthr!="")
+					$('div.error').html(errthr);
+				/*$('div.error').html(JSON.stringify(xr)+'--'+JSON.stringify(msg)+'--'+JSON.stringify(errthr));*/
+				$('div.error').show();
+			$('#register_btn').show();
+			$('#register_text').hide();
+		  }
+		});
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Swing D | Baseball Game Data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Swing Data , SwingD" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+ <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+</head>
+<body>
+	<!--banner-starts-here-->
+	<div class="banner wow bounce" data-wow-delay="0.1s" id="home">
+       <form action="" id="game_form">
+		<div class="container">
+			<div class="header">
+				<div class="header-left">
+					<a href="index.html">
+                    <!--<img src="images/logo.png" alt="">-->
+                    SwingD
+                    </a>
+				</div>
+				<div class="menu">
+                     <a class="toggleMenu" href="#"><img src="images/menu-icon.png" alt="" /> </a>
+					<ul class="nav" id="nav">
+						<li><a href="index.html" class="active scroll">HOME</a></li>
+						<!--<li style="display:none;"><a href="#feature" class="scroll">FEATURES</a></li>-->
+                        <li><a href="pitch.html" class="scroll hidden" id="pitch_link">pitch</a></li>
+                        <li><a href="#dataupdate" class="scroll hidden" id="dataupdate_link">dataupdate</a></li>
+						<li><a class="scroll" href="dataupload.html">UPLOAD</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="content wow bounce" data-wow-delay="0.1s">
+            	<h3>Ball Taken Outcome</h3>
+            	<div id="gameform_container" class="cgform">
+                	<p>
+                    	<a href="javascript:void(0);" class="gresult" result="B" >Ball</a>
+                    	<a href="javascript:void(0);" class="gresult" result="W">Walk</a>
+                    	<a href="javascript:void(0);" class="gresult" result="HBP">HBP</a>
+                    	<a href="javascript:void(0);" class="gresult" result="BC">Bad call. Actually a strike</a>
+                    </p>
+                    <p>
+                    <input type="hidden" name="hit_result" id="hit_result" value="" />
+                    <!--<input type="button" name="cont_btn" id="cont_btn" value="Continue" class="submit_btn"/>
+                    <input type="button" name="back_btn" id="back_btn" value="Back" class="back_btn"/>-->
+                    </p>
+                </div>
+
+               </div>
+                <div class="footer">
+                    <div class="footer-left">
+                     <input type="button" name="back_btn" id="back_btn" value="Back" class="red_btn"/>
+                    </div>
+                    <div class="footer-right">
+                    </div>
+                </div>
+		</div>
+      </form>
+	</div>
+	<!--banner-ends-here-->
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="js/responsive-nav.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	/*$('#cont_btn').click(function(){
+		var o=$('#hit_result').val();
+		
+		var g=window.localStorage.getItem("game");
+		//alert(g);
+		var game=JSON.parse(g);
+		var srl=game.length-1;
+		
+		game[srl].outcome=o;
+		//alert(JSON.stringify(game));
+		
+		window.localStorage.setItem("game",JSON.stringify(game));
+		gotopage('dataupload.html');
+	});*/
+	$('.gresult').click(function(){
+		$('.gresult').animate({
+			backgroundColor: "#eaeaea",
+			}, 100 );
+		$(this).animate({
+			backgroundColor: "#00FC76",
+			}, 500 );
+		$('#hit_result').val($(this).attr('result'));
+		var o=$('#hit_result').val();
+		
+		var g=window.localStorage.getItem("game");
+		var game=JSON.parse(g);
+		var srl=game.length-1;
+		
+		game[srl].outcome=o;
+		
+		window.localStorage.setItem("game",JSON.stringify(game));
+		gotopage('dataupload.html');
+	});
+
+});
+
+function gotopage(p)
+{
+	window.location=p;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+﻿<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>SwingD | Baseball Game Data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+<meta name="keywords" content="Swing Data , SwingD" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="css/bounce_animate.css" rel='stylesheet' type='text/css' />
+
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<!--<script type="text/javascript" src="js/jquery-ui-min.js"></script>-->
+</head>
+<body>
+	<div id="preloader">
+    	<img src="images/loading.gif" /><br/>
+    	<p>Loading content.. please wait</p>
+    </div>
+    <!--banner-starts-here-->
+	<div class="banner page-content index_back" id="home">
+    	<!--header start -->
+        <div class="header">
+            <a href="#" class="show-sidebar"></a>
+            <a href="#" class="hide-sidebar"></a>   
+          <!--<p>Welcome!</p>
+            <a href="contact.html" class="header-mail"></a>-->
+            <a href="tel:123456" class="header-call"></a>
+        </div>
+  <!--header end -->
+		<div class="container">
+			<div class="banner-bottom bounceInLeft">
+				<h1>SwingD</h1>
+                <!--<p>Batting Practice</p>-->
+               <div id="login_container">
+                <form id="user_form">
+                <div id="login_form">
+                	<div class="error notification"></div>
+                	<div>
+                	<label>Email</label>
+                    <input type="email" name="uemail" id="uemail" placeholder="User Email"/>
+                    </div>
+                    <div>
+                    <label>Password</label>
+                    <input type="password" name="upass" id="upass" placeholder="Password" />
+                    </div>
+                    <div>
+                    <input type="checkbox" name="remember_me" id="remember_me" value="1" /> Remember Me
+                    </div>
+               		 <a class="scroll greenlink" id="signin_btn" href="javascript:void(0);">Sign In</a>
+                     <p id="signin_text">Signing In ...</p>
+                     <br />
+                     <a href="resetpass.html?t=forgotpass">Forgot password?</a>
+                </div>
+                </form>
+                <p>or</p>
+                <a class="scroll greenlink" href="register.html">Create Account</a>
+                </div>
+                <!--eof login container -->
+                <div id="user_container">
+                	<div id="upgrade_msg" class="notification">
+                    	<p>Congratulations!  Thank you for upgrading to the <b class="mname"></b> membership.  Your membership will continue through <b class="mdate"></b>.  Please contact us.  We look forward to providing you the best service possible.
+                        </p>
+                    </div>
+                	<p class="page_heading"></p>
+                    <p>
+                    <a class="scroll greenlink clink" href="javascript:void(0);" id="cage_link" >Start Batting Practice</a>
+                    <a class="scroll greenlink glink" href="game_play.html" >Start Game</a>
+                    </p>
+               </div>
+                 <!--eof user container -->
+			</div>
+		</div>
+	</div>
+<!--sidebar starts -->
+<div class="page-sidebar">
+</div>
+<!--sidebar ends here-->
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="js/slide_panel.js"></script>
+<script type="text/javascript" src="js/general.js"></script>
+<script src="phonegap.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+//window.localStorage.setItem("hitter",null);
+	if(checkLogin())
+	{
+		var u=JSON.parse(window.localStorage.getItem("user"));
+		$('.page_heading').html('Hi! '+u.user_name);
+		if(u.user_group=='Basic')
+		{
+			$('.clink').hide();
+		}
+		else
+		{
+			$('.clink').show();
+		}
+		$('#login_container').hide();
+		$('#user_container').show();
+		//msg
+		if(getURLParameter('u')=='s')
+		{
+			$('.mname').html(u.user_group);
+			$('.mdate').html(u.expire_date);
+			$('#upgrade_msg').show();
+		}
+			
+		//
+		$('#preloader').hide();
+		
+	}
+	else
+	{
+		$('#login_container').show();
+		$('#user_container, .header').hide();
+		$('#preloader').hide();
+	}
+	$('#cage_link').click(function(){
+		var u=JSON.parse(window.localStorage.getItem("user"));
+		if(typeof(u.user_group)=='undefined' || u.user_group=='Rookie')
+			window.location='subscribe.html';
+		else
+			window.location='cageform.html';
+	});
+
+	$('#signin_btn').click(function(){
+		$('div.error').html('').hide();
+		$('#signin_btn').hide();
+		$('#signin_text').show();
+		var pstr='u='+$('#uemail').val();
+		pstr+='&p='+$('#upass').val();
+		//var newurl='http://www.swingd.com/action/proxy.php';
+		//var acturl='http://www.swingd.com/action/user_signin.php';
+		
+		$.ajax({
+		   //url: 'http://www.achievedigital.com/swingd/action/user_signin.php',
+		 url: 'https://www.swingd.com/action/user_signin.php',
+		  dataType: 'json',
+		  crossDomain: true,
+		  method: 'POST',
+		  async: false,
+		  data: pstr,
+		  success: function(data) {
+				if(data.success=='1')
+				{
+					var d = new Date();
+					var n = d.getTime(); 
+					data.logintime=n;
+					data.expiretime=eval(n)+eval(10800000);
+					if($('#remember_me').prop('checked')==true)
+						data.remember=1;
+					else
+						data.remember=0;
+					
+					window.localStorage.setItem('user',JSON.stringify(data));
+					//window.location='cg.html';
+					forceUpdate();
+					$('.page_heading').html('Hi! '+data.user_name);
+					$('#login_container').hide();
+					
+					$('#user_container, .header').show();
+				}
+				else
+				{
+					$('div.error').html('Wrong Email or Password!').show();
+				}
+				$('#signin_text').hide();
+				$('#signin_btn').show();
+			},
+		  error: function(xr,msg,errthr)
+		  {
+		  		var errstr='';
+				if(xr.statusText!="")
+					errstr=xr.statusText;
+				if(errthr=='Not Allowed')
+					errstr='No network connction found. Please try later.';
+				else if(errthr!="")
+					errstr=errthr;
+				if(errstr=="")
+					errstr="Sign In attempt failed! Try again later.";
+				$('div.error').html(errstr);
+				//$('div.error').html(JSON.stringify(xr)+'--'+JSON.stringify(msg)+'--'+JSON.stringify(errthr));
+				$('div.error').show();
+				$('#signin_text').hide();
+				$('#signin_btn').show();
+		  }
+			
+		});
+
+	});
+});
+</script>
+<script src="phonegap.js"></script>
+</body>
+</html>

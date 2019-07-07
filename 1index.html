@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Swing D | Baseball Game Data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Swing Data , SwingD" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<!--animated-css-->
+		<link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
+		<script src="js/wow.min.js"></script>
+		<script>
+		 new WOW().init();
+		</script>
+<script language="javascript">
+function ifIsFinished()
+{
+	if(document.getElementById('isFinished').value==1)
+	window.location.href="#dataupdate";
+}
+</script>
+<!--animated-css-->  
+</head>
+<body>
+	<!--banner-starts-here-->
+	<div class="banner wow bounce" data-wow-delay="0.1s" id="home">
+		<div class="container">
+			<div class="header">
+				<div class="header-left">
+					<a href="index.html"><!--<img src="images/logo.png" alt="">--></a>
+				</div>
+				<div class="menu">
+                    <a class="toggleMenu" href="#"><img src="images/menu-icon.png" alt="" /></a>
+					<ul class="nav" id="nav">
+						<li><a href="#home" class="scroll">HOME</a></li>
+						<!--<li style="display:none;"><a href="#feature" class="scroll">FEATURES</a></li>-->
+                        <li><a href="#pitch" class="scroll hidden" id="pitch_link">pitch</a></li>
+						<li><a class="active scroll" href="#contact">CONTACT</a></li>
+					</ul>
+                                  <!----start-top-nav-script---->
+		                      <script type="text/javascript" src="js/responsive-nav.js"></script>
+
+					<script type="text/javascript">
+					jQuery(document).ready(function($) {
+						$(".scroll").click(function(event){		
+							event.preventDefault();
+							$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+						});
+						
+						$('#cont_btn').click(function(){
+							$('#pitch').show();
+							$('#pitch_link').click();
+						});
+					});
+					</script>
+		<!----//End-top-nav-script---->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="banner-bottom wow bounce" data-wow-delay="0.1s">
+				<!--<h1>Appsolute is the world’s first awesomeness measuring app!</h1>
+				<p>Coming soon in a device near you!</p>-->
+                <form action="" id="cagehit_form">
+                	<p>
+                	<label>Date</label>
+                    <select name="month" id="month">
+                    	<option value="">Month</option>
+                    	<option value="1">January</option>
+                    	<option value="2">February</option>
+                    	<option value="3">March</option>
+                    	<option value="4">April</option>
+                    	<option value="5">May</option>
+                    	<option value="6">June</option>
+                    	<option value="7">July</option>
+                    	<option value="8">August</option>
+                    	<option value="9">September</option>
+                    	<option value="10">October</option>
+                    	<option value="11">November</option>
+                    	<option value="12">December</option>
+                    </select>
+                    <select name="day" id="day">
+                    	<option value="">Day</option>
+                    	<option value="1">1</option>
+                    	<option value="2">2</option>
+                    	<option value="3">3</option>
+                    	<option value="4">4</option>
+                    	<option value="5">5</option>
+                    	<option value="6">6</option>
+                    	<option value="7">7</option>
+                    	<option value="8">8</option>
+                    	<option value="9">9</option>
+                    	<option value="10">10</option>
+                    	<option value="11">11</option>
+                    	<option value="12">12</option>
+                    	<option value="13">13</option>
+                    	<option value="14">14</option>
+                    	<option value="15">15</option>
+                    	<option value="16">16</option>
+                    	<option value="17">17</option>
+                    	<option value="18">18</option>
+                    	<option value="19">19</option>
+                    	<option value="20">20</option>
+                    	<option value="21">21</option>
+                    	<option value="22">22</option>
+                    	<option value="23">23</option>
+                    	<option value="24">24</option>
+                    	<option value="25">25</option>
+                    	<option value="26">26</option>
+                    	<option value="27">27</option>
+                    	<option value="28">28</option>
+                    	<option value="29">29</option>
+                    	<option value="30">30</option>
+                    	<option value="31">31</option>
+                    </select>
+                    <select name="year" id="year">
+                    	<option value="">Year</option>
+                    	<option value="2015">2015</option>
+                    	<option value="2016">2016</option>
+                    	<option value="2017">2017</option>
+                    	<option value="2018">2018</option>
+                    	<option value="2019">2019</option>
+                    	<option value="2020">2020</option>
+                    </select>
+                    </p>
+                    <p>
+                    <label>Hitter</label>
+                    <select>
+                    <option value="">Hitter</option>
+                    <option value="1">Alexis</option>
+                    <option value="2">Annie</option>
+                    </select>
+                    </p>
+                    <p>
+                    <input type="button" name="cont_btn" id="cont_btn" value="Continue" />
+                    </p>
+                </form>
+			</div>
+		</div>
+	</div>
+	<!--home-ends-here-->
+    <!--pitch 1 starts here -->
+ <!--
+ <div class="pitch" id="pitch" data-role="page">
+		<div class="container">
+			<div class="header">
+				<div class="header-left">
+					<a href="index.html"></a>
+				</div>
+				<div class="menu">
+                                    <a class="toggleMenu" href="#"><img src="images/menu-icon.png" alt="" /> </a>
+					<ul class="nav" id="nav">
+						<li><a href="#home" class="scroll">HOME</a></li>
+						<li><a class="active scroll" href="#contact">CONTACT</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			<div class="pitch-top">
+				<div class="col-md-5 awesome-left wow bounceInLeft" data-wow-delay="0.4s" id="pitch_header">
+                Pitch 1
+                </div>
+            </div>
+			<div class="pitch-bottom">
+				<div class="col-md-5 pitch-bottom-left wow bounceInLeft" data-wow-delay="0.4s">
+                	<input type="radio" name="pitch_type" value="1" /> Strike Swinging (hard hit)<br />
+                	<input type="radio" name="pitch_type" value="2" /> Strike Swinging (weak hit)<br />
+                	<input type="radio" name="pitch_type" value="3" /> Strike Taken<br />
+                	<input type="radio" name="pitch_type" value="4" /> Ball Taken<br />
+                	<input type="radio" name="pitch_type" value="5" /> Ball Swinging (hard hit)<br />
+                	<input type="radio" name="pitch_type" value="6" /> Ball Swinging (weak hit)<br /><br /><br />
+                    Hitter Finished?<br /><br /><input type="radio" name="isFinished" value="1" /> Yes<br /><br />
+					<input type="button" name="backbutton" value="Back" />
+					<input type="button" name="cont_pitch" id="cont_pitch" value="Continue" onClick="ifIsFinished();" />
+                    <input type="hidden" name="pitch_no" id="pitch_no" value="1" />
+				</div>
+				<div class="clearfix"> </div>
+       </div>
+   </div>-->
+    <!--pitch 1 ends here -->
+    <!--submit data starts here -->
+    <div class="dataupdate" id="dataupdate" data-role="page">
+		<div class="container">
+			<div class="dataupdate-top">
+				<div class="col-md-5 awesome-left wow bounceInLeft" data-wow-delay="0.4s">
+                </div>
+            </div>
+			<div class="dataupdate-bottom">
+				<div class="col-md-5 awesome-bottom-left wow bounceInLeft" data-wow-delay="0.4s">
+					Click submit to finish.<br /><br />
+					<input type="button" name="backbutton" value="Back" />
+					<input type="button" name="contbutton" value="Submit" onClick="window.location.href='dataupdate'" />
+					<!--<img src="images/a-2.png" alt="">-->
+				</div>
+				<div class="clearfix"> </div>
+       </div>
+   </div>
+    <!--submit data ends here -->
+    <!--finishdata starts here -->
+    <div class="finishdata" id="finishdata" data-role="page">
+		<div class="container">
+			<div class="finishdata-top">
+				<div class="col-md-5 awesome-left wow bounceInLeft" data-wow-delay="0.4s">
+                </div>
+            </div>
+			<div class="finishdata-bottom">
+				<div class="col-md-5 awesome-bottom-left wow bounceInLeft" data-wow-delay="0.4s">
+					Your response has been recorded.<br /><br />
+					<a href="https://docs.google.com/forms/d/18FGh9mc7UJLip3nJm7OF4IPCk9SUtYB-0xPMY7Hyeo4/viewform?usp=form_confirm" target="_self" class="ss-bottom-link">Submit another response</a>
+                    <!--<img src="images/a-2.png" alt="">-->
+				</div>
+				<div class="clearfix"> </div>
+       </div>
+   </div>
+    <!--finishdata ends here -->
+	<!--awesome-starts-here-->
+	<!--
+    <div class="awesome">
+		<div class="container">
+			<div class="awesome-top">
+				<div class="col-md-5 awesome-left wow bounceInLeft" data-wow-delay="0.4s">
+					<h3>Awesome meets you</h3>
+					<p>Measure your awesomess with a tap of a button in a simple User Interface.</p>
+				</div>
+				<div class="col-md-7 awesome-right wow bounceInRight" data-wow-delay="0.4s">
+					<img src="images/a-1.png" alt="">
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="awesome-bottom">
+				<div class="col-md-5 awesome-bottom-left wow bounceInLeft" data-wow-delay="0.4s">
+					<img src="images/a-2.png" alt="">
+				</div>
+				<div class="col-md-7 awesome-bottom-right wow bounceInRight" data-wow-delay="0.4s">
+					<h3>Express yourself</h3>
+					<p>Appsolute allows you to express your awesomeness. No matter <span>what you express or even share with your peers,  Appsolute is</span> your best platform on the web. Say hello to your new <span>awesomeness meter! </span></p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>-->
+	<!--awesome-ends-here-->
+	<!--feature-starts-here-->
+	<!--
+    <div id="feature" class="feature" >
+			<div class="feature-top">
+				<h3 class=" wow bounce" data-wow-delay="0.1s">Featured On</h3>
+				<div class="feature-main">
+					<ul id="flexiselDemo1">			
+				<li><img src="images/f.png"/></li>
+				<li><img src="images/t.png"/></li>
+				<li><img src="images/n.png"/></li>
+				<li><img src="images/w.png"/></li>
+				<li><img src="images/j.png"/></li>
+            </ul>
+            <script type="text/javascript">
+		$(window).load(function() {
+			$("#flexiselDemo1").flexisel({
+				visibleItems: 9,
+				animationSpeed: 1000,
+				autoPlay: true,
+				autoPlaySpeed: 3000,    		
+				pauseOnHover: true,
+				enableResponsiveBreakpoints: true,
+		    	responsiveBreakpoints: { 
+		    		portrait: { 
+		    			changePoint:480,
+		    			visibleItems: 1
+		    		}, 
+		    		landscape: { 
+		    			changePoint:640,
+		    			visibleItems: 2
+		    		},
+		    		tablet: { 
+		    			changePoint:768,
+		    			visibleItems: 3
+		    		}
+		    	}
+		    });
+		    
+		});
+	</script>
+	<script type="text/javascript" src="js/jquery.flexisel.js"></script>
+				</div>
+			</div>
+	</div>-->
+	<!--feature-ends-here-->
+	<!--get-in-starts-here-->
+	<!--
+    <div class="get">
+		<div class="container">
+			<div class="get-main">
+				<h3 class="wow bounce" data-wow-delay="0.1s">Get It Now</h3>
+				<ul>
+					<li class="wow bounce" data-wow-delay="0.4s"><input name="submit" class="app" type="submit" value=""></li>
+					<li class="wow bounce" data-wow-delay="0.4s"><input name="submit" class="google"type="submit" value=""></li>
+				</ul>
+			</div>
+		</div>
+	</div>-->
+	<!--get-in-ends-here-->
+	<!--talk-starts-here-->
+	<!--
+    <div class="talk" id="contact">
+		<div class="container">
+			<div class="talk-top wow bounce" data-wow-delay="0.1s">
+				<h3 class="wow bounce" data-wow-delay="0.1s">Let's Talk</h3>
+				<div class="talk-main">
+					<input type="text" class="text" value="YOUR NAME" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'YOUR NAME';}">
+					<input type="text" class="text" value="YOUR EMAIL" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'YOUR EMAIL';}">
+					<textarea value="YOUR MESSAGE" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'YOUR MESSAGE';}">YOUR MESSAGE</textarea>
+					<div class="clear"> </div>
+					<div class="sub-button">
+						<input name="submit" type="submit" value="CONTACT">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>-->
+	<!--talk-ends-here-->
+	<!--footer-starts-here-->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-main">
+				<div class="col-md-6 footer-left wow bounceInLeft" data-wow-delay="0.1s">
+					<h5>Contact Address 1<span>Contact address  2</span></h5>
+				</div>
+				<div class="col-md-6 footer-right wow bounceInRight" data-wow-delay="0.1s">
+					<ul>
+						<li><a href="#"><span class="twit"> </span></a></li>
+						<li><a href="#"><span class="f"> </span></a></li>
+						<li><a href="#"><span class="in"> </span></a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="footer-text">
+				<p>powered by info</a></p>
+			</div>
+		</div>
+		 <script type="text/javascript">
+									$(document).ready(function() {
+										/*
+										var defaults = {
+								  			containerID: 'toTop', // fading element id
+											containerHoverID: 'toTopHover', // fading element hover id
+											scrollSpeed: 1200,
+											easingType: 'linear' 
+								 		};
+										*/
+										
+										$().UItoTop({ easingType: 'easeOutQuart' });
+										
+									});
+								</script>
+		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	</div>
+	<!--footer-ends-here-->
+	<!---- start-smoth-scrolling---->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
+					jQuery(document).ready(function($) {
+						$(".scroll").click(function(event){		
+							event.preventDefault();
+							$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+						});
+					});
+					</script>
+<!--start-smoth-scrolling-->
+</body>
+</html>

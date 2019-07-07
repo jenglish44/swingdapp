@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Swing D | Baseball Game Data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Swing Data , SwingD" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="css/bounce_animate.css" rel='stylesheet' type='text/css' />
+
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script language="javascript">
+$( document ).ready(function() {
+var ostr='';
+for(var i=1;i<=31;i++)
+{
+	ostr+='<option value="'+i+'">'+i+'</option>';
+}
+$('#day').append(ostr);
+var d=new Date();
+$('#month').val(d.getMonth()+1);
+$('#day').val(d.getDate());
+$('#ccyear').val(d.getFullYear());
+
+
+var bg=getURLParameter('g');
+if(bg!=null)
+{
+	var g=window.localStorage.getItem("game");
+	game=JSON.parse(g);
+	var ed=game[bg].edate.split('-');
+	$('#month').val(ed[1]);
+	$('#day').val(ed[2]);
+	$('#ccyear').val(ed[0]);
+}
+});
+</script>
+</head>
+<body >
+	<div id="preloader">
+    	<img src="images/loading.gif" /><br/>
+    	<p>Loading content.. please wait</p>
+    </div>
+	<!--banner-starts-here-->
+	<div class="banner page-content game_play_back" data-wow-delay="0.1s" id="home">
+     	<!--header start -->
+        <div class="header">
+            <a href="#" class="show-sidebar"></a>
+            <a href="#" class="hide-sidebar"></a>   
+          <p class="header_title">Play</p>
+            <!--<a href="contact.html" class="header-mail"></a>-->
+            <a href="tel:123456" class="header-call"></a>
+        </div>
+  <!--header end -->
+      <form action="" id="cagehit_form">
+		<div class="container">
+			<div class="content bounceInLeft" data-wow-delay="0.1s">
+            	<div id="gameform_container" class="cgform">
+                 	<p>
+                    <label>Date</label>
+                    <select name="month" id="month" class="date">
+                    	<option value="">Month</option>
+                    	<option value="1">January</option>
+                    	<option value="2">February</option>
+                    	<option value="3">March</option>
+                    	<option value="4">April</option>
+                    	<option value="5">May</option>
+                    	<option value="6">June</option>
+                    	<option value="7">July</option>
+                    	<option value="8">August</option>
+                    	<option value="9">September</option>
+                    	<option value="10">October</option>
+                    	<option value="11">November</option>
+                    	<option value="12">December</option>
+                    </select>
+                    <select name="day" id="day" class="date">
+                    	<option value="">Day</option>
+                    </select>
+                    <select name="ccyear" id="ccyear" class="date">
+                    	<option value="">Year</option>
+                    	<option value="2015">2015</option>
+                    	<option value="2016">2016</option>
+                    	<option value="2017">2017</option>
+                    	<option value="2018">2018</option>
+                    	<option value="2019">2019</option>
+                    	<option value="2020">2020</option>
+                    </select>
+                    </p>
+               	<p>
+                	<label class="visible">Home Team</label>
+                    <select name="team" id="team">
+                    	<option value="">-Select-</option>
+                    </select> 
+                    </p>
+                	<p class="hidden oteam">
+                	<label>Other Team</label>
+                    <input type="text" name="o_team" id="o_team" value="" placeholder="Other Team"/>
+                    </p>
+                	<p>
+                	<label class="visible">Visiting Team</label>
+                    <select name="vteam" id="vteam">
+                    	<option value="">-Select-</option>
+                    </select> 
+                    </p>
+                	<p class="hidden ovteam">
+                	<label>Other Visiting Team</label>
+                    <input type="text" name="o_vteam" id="o_vteam" value="" placeholder=" Other Visiting Team"/>
+                    </p>
+                	<p>
+                	<label>Batter</label>
+                    <select name="batter" id="batter">
+                    	<option value="">Batter</option>
+                    </select>
+                    </p>
+                	<p>
+                	<label>Inning</label>
+                    <select name="inning" id="inning">
+                    	<option value="">Inning</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+                    </p>
+                    <div id="error_note" class="hidden"></div>
+                </div>
+               </div>
+                <div class="footer">
+                    <div class="footer-right">
+                    <input type="button" name="cont_btn" id="cont_btn" value="Continue" class="submit_btn"/>
+                    </div>
+                </div>
+		</div>
+                </form>
+	</div>
+	<!--banner-ends-here-->
+    <div id="toPopup"> 
+        <div class="close"></div>
+       	<span class="ecs_tooltip">Press Esc to close <span class="arrow"></span></span>
+		<div id="popup_content"> <!--your content start-->
+            <p>
+            	<span id="popup_str"></span>
+                <div>
+                <input type="button" name="confirm_btn" id="confirm_btn1" value="No" class="grey_btn confirm_btn"/>
+                <input type="button" name="confirm_btn" id="confirm_btn2" value="Yes" class="red_btn confirm_btn"/>
+                </div>
+            </p>
+        </div> <!--your content end-->
+    </div> <!--toPopup end-->
+	<div class="loader"></div>
+   	<div id="backgroundPopup"></div>
+<!--sidebar starts -->
+<div class="page-sidebar">
+</div>
+<!--sidebar ends here-->
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="js/slide_panel.js"></script>
+<script type="text/javascript" src="js/popup.js"></script>
+<script type="text/javascript" src="js/general.js"></script>
+<script src="phonegap.js"></script>
+<script type="text/javascript">
+//var base_url='https://www.swingd.com/action/';
+var base_url='action/';
+$(document).ready(function(){
+	showTeam();
+	getPlayer();
+	$('#cont_btn').click(function(){
+		//validations
+		var err=0;
+		var err_str='';
+		if($('#month').val()==""){
+			err_str+='<li>Please select month</li>';
+			$('#month').addClass('error');
+			err=1;
+		}
+		if($('#day').val()==""){
+			err_str+='<li>Please select day.</li>';
+			$('#day').addClass('error');
+			err=1;
+		}
+		if($('#ccyear').val()==""){
+			err_str+='<li>Please select year.</li>';
+			$('#ccyear').addClass('error');
+			err=1;
+		}
+		if($('#team').val()==$('#vteam').val()){
+			err_str+='<li>Home and visiting team can not be same.</li>';
+			$('#team, #vteam').addClass('error');
+			err=1;
+		}
+		if($('#vteam').val()==''){
+			err_str+='<li>Please enter visitor team.</li>';
+			$('#vteam').addClass('error');
+			err=1;
+		}
+		if($('#team').val()==""){
+			err_str+='<li>Please enter home team.</li>';
+			$('#team').addClass('error');
+			err=1;
+		}
+		if($('#inning').val()==""){
+			err_str+='<li>Please select inning.</li>';
+			$('#inning').addClass('error');
+			err=1;
+		}
+		if(err==1)
+		{
+		$('#error_note').html('<ul>'+err_str+'</ul>').removeClass('hidden');
+		return false;
+		}
+		else{
+			var batter=$('#batter option:eq(1)').val();
+		$('#error_note').html('').addClass('hidden');
+		$('.error').removeClass('error');
+		var g=window.localStorage.getItem("game");
+		if(g==null)
+		{
+			var g=[
+				{'edate':$('#ccyear').val()+'-'+$('#month').val()+'-'+$('#day').val()}
+				];
+				window.localStorage.setItem("game",JSON.stringify(g));
+			game=g;
+		}
+		else
+		{
+			//alert(g);
+			game=JSON.parse(g);
+			var arr={'edate':$('#ccyear').val()+'-'+$('#month').val()+'-'+$('#day').val()};
+			game.push(arr);
+			window.localStorage.setItem("game",JSON.stringify(game));
+		}
+		var srl=game.length-1;
+		var bg=getURLParameter('g');
+		if(bg==null)
+			window.localStorage.setItem("gamesrl",srl);
+		
+		game[srl].team=$('#team').val();
+		game[srl].vteam=$('#vteam').val();
+		game[srl].cteam=$('#vteam').val();
+		game[srl].cinning=$('#inning').val();
+		game[srl].cbatter=game[srl].lvbatter=batter;
+		game[srl].lhbatter=0;
+		game[srl].cball=0;
+		game[srl].cout=0;
+		game[srl].cstrike=0;
+		//other team value
+		var team=getTeam();
+		if($('#team').val()==-1)
+		{
+			game[srl].otherteam=$('#o_team').val();
+			team.push({'id':'-1','title':$('#o_team').val()});
+		}
+		if($('#vteam').val()==-2)
+		{
+			game[srl].othervteam=$('#o_vteam').val();
+			team.push({'id':'-2','title':$('#o_vteam').val()});
+		}
+		window.localStorage.setItem("team",JSON.stringify(team));
+		//eof other team value
+		
+		game[srl].stat={};
+		game[srl].stat[0]={'t':$('#vteam').val(),'i':$('#inning').val(),'b':batter,'bl':0,'o':0,'s':0,'r':'','r1':''};
+		window.localStorage.setItem("game",JSON.stringify(game));
+
+		if(bg!=null)
+			gotopage('game_pitch.html?s=0&g='+bg);
+		else
+			gotopage('game_pitch.html');
+		}//eof validation else
+	});
+	readypopup();
+	
+	$('#day, #month, #ccyear').change(function(){
+		var m=$('#month').val();
+		if(m==2)
+		{
+			if($('#ccyear').val()%4==0 && $('#day').val()>29)
+				$('#day').val(29);
+			if($('#ccyear').val()%4!=0 && $('#day').val()>28)
+				$('#day').val(28);
+		}
+		if(m==2 || m==4 || m==6 || m==9 || m==11)
+		{
+			if($('#day').val()>30)
+				$('#day').val(30);
+		}
+	});
+	/*$('#ishteam option[value="hteam"]').prop('selected', true)
+	$('#ishteam').change(function(){
+		if($(this).val()=='vteam')
+			$('#batter').show();
+		else
+			$('#batter').hide();
+	});*/
+	$('#vteam').change(function(){
+		//var t=$('#vteam').val();
+		if($(this).val()==-2)
+			$('.ovteam').removeClass('hidden');
+		else
+			$('.ovteam').addClass('hidden');
+		showPlayer($('#vteam').val());
+	});
+	$('#team').change(function(){
+		if($(this).val()==-1)
+			$('.oteam').removeClass('hidden');
+		else
+			$('.oteam').addClass('hidden');
+	});
+	$('#batter').hide();
+	var bg=getURLParameter('g');
+	if(bg!=null)
+	{
+		var g=window.localStorage.getItem("game");
+		game=JSON.parse(g);
+		var obj=game[bg];
+		//var dobj=obj.edate.split('-');
+		//alert(g);
+		//var bb=obj.inning[1].split(',');
+		$('#team').val(obj.team);
+		$('#vteam').val(obj.vteam);
+		showPlayer(obj.vteam);
+		//$('#vflexdev').val(obj.vflex);
+		$('#inning').val(1);
+		$('#batter option:eq(1)').val();
+		/*$('#day').val(dobj[2]);
+		$('#ccyear').val(dobj[0]);
+		$('#hitter').val(obj.id);
+		$('#pitch').val(obj.pdistance);
+		$('#vflexdev').val(obj.vflex);
+		$('#game_note').val(obj.game_note);*/
+		
+	}
+
+
+});
+	function showTeam()
+	{
+		var t=getTeam();
+		if(t!=null)
+		{
+			for(var i=0;i<t.length;i++)
+			{
+				if(typeof(t[i])!='undefined' && t[i]!=null)
+				{
+					$('#team').append('<option value="'+t[i].id+'">'+t[i].title+'</option>');
+					$('#vteam').append('<option value="'+t[i].id+'">'+t[i].title+'</option>');
+				}
+			}
+		}
+		$('#team').append('<option value="-1">Other</option>');
+		$('#vteam').append('<option value="-2">Other</option>');
+	}
+	
+	function getPlayer()
+	{
+		var player=window.localStorage.getItem("player");
+		var playerdate=window.localStorage.getItem("playerdate");
+		var today=new Date();
+		//player=null;
+		if(player==null || playerdate==null || dateDiff( playerdate, today )>cache_day)
+		{
+			if(setPlayer())
+			{
+				var r=window.localStorage.getItem("player");
+				return JSON.parse(r);
+			}
+		}
+		else
+		{
+			return JSON.parse(player);
+		}
+	}
+	
+	function setPlayer()
+	{
+			var u=JSON.parse(window.localStorage.getItem("user"));
+			$.ajax({
+			  url: base_url+"getplayer.php",
+			  //url: "action/getplayer.php",
+			  data: "u="+u.id,
+			  dataType: 'json',
+			  async: false,
+			 // data: myData,
+			  success: function(c) {
+				//alert(c);
+				window.localStorage.setItem("player",JSON.stringify(c));
+				window.localStorage.setItem("playerdate",new Date());
+				//var w=window.localStorage.getItem("winery");
+				//alert(w);
+				return true;
+			  }
+			});
+				return true;
+	}
+	function getTeam()
+	{
+		var team=window.localStorage.getItem("team");
+		var teamdate=window.localStorage.getItem("teamdate");
+		var today=new Date();
+		//team=null;
+		if(team==null || teamdate==null || dateDiff( teamdate, today )>cache_day)
+		{
+			if(setTeam())
+			{
+				var r=window.localStorage.getItem("team");
+				return JSON.parse(r);
+			}
+		}
+		else
+		{
+			return JSON.parse(team);
+		}
+	}
+	
+	function setTeam()
+	{
+			var u=JSON.parse(window.localStorage.getItem("user"));
+			$.ajax({
+			  url: base_url+"getteam.php",
+			 // url: "action/getteam.php",
+			  dataType: 'json',
+			  async: false,
+			  data: "u="+u.id,
+			  success: function(c) {
+				//alert(c);
+				window.localStorage.setItem("team",JSON.stringify(c));
+				window.localStorage.setItem("teamdate",new Date());
+				//var w=window.localStorage.getItem("winery");
+				//alert(w);
+				return true;
+			  }
+			});
+				return true;
+	}
+	function showPlayer(t)
+	{
+		//var t=$('#vteam').val();
+		var p=getPlayer();
+		var pstr='<option value="">Batter</option>';
+		var pcount=0;
+		if(p!=null)
+		{
+			for(var i=0;i<p.length;i++)
+			{
+				if(isNaN(p[i].name) && p[i].team_id==t)
+				{
+					pstr+='<option value="'+p[i].id+'">'+p[i].name+'</option>';
+					pcount++;
+				}
+			}
+		}
+		if(pcount<9)
+		{
+			for(var j=(eval(pcount)+eval(1));j<=9;j++)
+				pstr+='<option value="'+j+'">'+j+'</option>';
+		}
+		$('#batter').html(pstr);
+	}
+	//eof player
+</script>
+</body>
+</html>
