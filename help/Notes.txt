@@ -1,0 +1,194 @@
+mampstack-5.5.30-1
+
+12/11/15
+
+Batting Order
+1. How to set batting order for ONLY 9 players when more than 9 players are on team?  What goes in input box for players not playing?
+1.5 The same value in multiple input boxes can not be submitted/unique value required in each input box.
+2. During Game: After 9th batter done batting restart batting order with 1st batter.
+3. During Game: Batter button needs cancel button.
+4. During Game: Batter button replaces current batter with selected batter for remainder of game or until user replaces this batter using batter button again.
+5. During Game: When returning from summary, please check batting order.
+
+Original Notes
+
+Game
+
+1. Do we need the following element: “My Team is home/My Team is visiting team”?
+Scenarios
+User has NOT set batting order - This element needed if 
+2. Change Hitter element to read-only (user can’t use this element to enter new hitter name)
+3. During game, batter has not completed their at-bat and, due to injury or something else, this batter is replaced with another player. The new batter inherits the count of the batter he replaced.  Currently, the app restarts count when new batter comes into game. This is not important enough for version 1, if ever!
+ 
+Practice
+
+Add "UPLOAD" button to cageform.html and maybe pitch.html.  Is database ready to store batting practice data?
+NEW TEAM button opens in same window as app and user unable to return to app without reopening it.
+
+1. change Cage Practice to Batting Practice in slider menu
+2. team selection to include “Other”, which lets user enter player name. [next version]
+3. Link/button for user to create team
+4. Summary, can we include like game data summary? [next button]
+5. Back button needs to be checked. 
+
+new
+1.  Query about pitch.html.  Could we include player name (last name if fine) to right of PITCH #?  For example, PITCH 1: English.
+2.  After each player has their turn, can “Team” selection default to the previously selected team?
+
+
+
+General
+1. Is practice and game data stored on phone?  Does upload button send both practice and game data to web db?
+2. External links must open in native browser.  These currently open is app window trapping user with no way back to app.
+
+
+
+
+Admin
+
+1. Header link needs to be checked
+2. Download report data as PDF and/or CSV
+3. Restricted access to admin features by membership
+4. Membership purchase
+5. Game Reports
+	Team Reports
+	a. Game
+	b. Date Range/all
+	c. Multiple Games (user selects multiple games)/all
+	Team Reports by count
+	a. Game
+	b. Date Range/all
+	c. Multiple Games (user selects multiple games)/all
+   	Player Reports
+	a. Game
+	b. Date Range/all
+	c. Multiple Games (user selects multiple games)/all
+	Team Reports by count
+	a. Game
+	b. Date Range/all
+	c. Multiple Games (user selects multiple games)/all
+6. Batting Practice Reports
+	a. Team Report by date range/all
+	b. Player Reports by date range/all
+
+
+Login error message…
+The User ID or Password you entered does not match our records.  Please try again.
+“Next” button returns user to login
+
+eCommerce
+
+Setup and test membership transactions scenarios to flow into actual bank account
+
+
+******************************************
+Help
+
+Batting Practice
+
+SwingD menu is available by tapping the icon with three short lines located in top left corner.  Tap the same icon when you want this menu to disappear.
+
+Available to Club and Professional members only
+Players can have multiple BP turns or rounds and you can record all of it.  When the overall BP session is complete, don’t forget to upload your data for analysis.  Data is stored on your phone until you have a connection to upload.  To upload simply tap the Upload button located in the footer area.
+
+Load app and login
+Tap Start Batting Practice button
+Batting Practice landing page allows you to set the following details.
+*Date - set date of batting practice
+*Team - select among teams you have created in administrator
+*Hitter - select the player taking BP
+*Pitch Distance - select the distance from pitcher to batter 
+Vflex Device - select the Vflex device in use during this BP if used
+Note - enter a short note that remains with selected hitter
+*Required fields
+
+Buttons located in footer area.
+New Team - takes you to administrator where you can create a new team and roster
+Continue - takes you pitch results page where you will record batting performance for each pitch until selected player has finished.
+
+While recording batting performance for each pitch the following buttons are in footer area.
+Undo - Undoes the last recorded pitch result
+Hitter Finished - tap this when BP round if finished for current hitter.  Takes you to BP landing page where you can select next hitter or upload data for analysis.
+
+
+Game
+
+Load app and login 
+Tap Start Game button
+Game landing page allows you to set the following details.
+Date - set date of game
+Home Team - select home team (bats last) among teams you have created in administrator.  If this team is not created, you can select ‘Other’ and provide team name for this team.
+Visiting Team - select visiting team (bats first) among teams you have created in administrator. If this team is not created, you can select ‘Other’ and provide team name for this team.
+Select your team   (WHAT DOES THIS DO AGAIN?)
+Set inning to start recording - normally set to ‘1’ for first inning but can start with any inning.
+Select Batter - appears if ‘My team is visitor team’ to allow you to select lead off batter to start game.
+
+Buttons located in footer area.
+Back - 
+Continue - takes you to pitch results where you will record batter outcomes for both teams during entire game.
+
+Located at top of pitch results is the icon (3 short lines) to display SwingD menu and the team name that is batting.
+The details panel is located just below the top area.  It provides the following details.
+Hitter - name of current hitter and batting order can be set in administrator or you can tap Batter button in footer to change batters.  If ‘Other’ selected for team, players will be recorded as number 1 through 9 because roster is not available to app.
+Inning - Inning count
+Outs - Outs count
+Balls - Balls count
+Strikes - Strikes count
+
+Pitch Results area is located just below the details panel.  Here you will record if the pitch was strike or ball and if it was swung on or taken.  It provides two buttons if strike is thrown: Strike Swinging and Strike Taken.  It provides two additional buttons if ball is thrown: Ball Swinging and Ball Taken.  
+
+If the pitch result is Strike Swing, the following buttons are provided so you can record outcome.
+Swing and Miss - 
+Foul Ball - 
+Fly Ball Out - 
+Line Drive Out - 
+Hard Ground Ball Out - 
+Ground Ball Out - 
+Long Fly Ball Out - 
+Fly Ball Hit - 
+Line Drive Hit - 
+Hard Ground Ball Hit - 
+Ground Ball Hit - 
+Long Fly Ball Hit - 
+Weak Infield Hit or Reach on Error - 
+
+If the pitch result is Strike Taken, the following buttons are provided so you can record outcome.
+Called Strike - 
+Strike Out Looking - 
+Bad Call. Actually a Ball. - 
+
+If the pitch result is Ball Swinging, the following buttons are provided so you can record outcome.
+Swing and Miss - 
+Foul Ball - 
+Fly Ball Out - 
+Line Drive Out - 
+Hard Ground Ball Out - 
+Ground Ball Out - 
+Long Fly Ball Out - 
+Fly Ball Hit - 
+Line Drive Hit - 
+Hard Ground Ball Hit - 
+Ground Ball Hit - 
+Long Fly Ball Hit - 
+Weak Infield Hit or Reach on Error - 
+
+
+If the pitch result is Ball Taken, the following buttons are provided so you can record outcome.
+Ball - 
+Walk - 
+Hit By Pitch (HBP) - 
+Bad Call. Actually a Strike. - 
+
+
+While recording batter outcomes during game the following buttons are in footer area.
+Undo - After tapping, you must confirm or cancel this action. If you cancel, you are returned to game without changing anything.  If you confirm the undo, you will permanently delete previously recorded outcome.     
+Summary - Displays a quick summary of outcomes from each pitch during game.
+Batter - Displays entire roster of team currently hitting and allows you to select any player from the roster to replace current batter.  If the hitting team is ‘Other,’ the roster will display 1 through 9 because player names are not available.
+Out - After tapping, you must confirm or cancel the out before it is recorded.  If you cancel, you are returned to game without change anything.  If you confirm the out, it is recorded as a team out and the current batter’s batting performance is not penalized.
+End Game - After tapping, you must confirm or cancel that this game has ended.  If you do not confirm, you are returned to game without changing anything.  If you confirm game has ended, takes you to summary and provides you with a button to return to game without any changes or continue to end game.  At this point, the following two buttons are available.
+Clear - permanently delete any data stored on your phone with a confirmation required and take me to start page
+Upload -  uploads all SwingD data stored on your phone to administrator for analysis and permanently deletes all SwingD data from your phone.
+
+*******************************  Items for Version 2  ***********************************
+
+1. Batting order validation: no alpha or special characters allowed, only numeric characters allowed.
